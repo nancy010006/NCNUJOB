@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
+    <meta charset="utf-8">
+    <title>Facebook SDK Login</title>
+    <link rel="stylesheet" type="text/css" href="http://www.w3schools.com/w3css/4/w3.css">
+    <script src='../js/jquery.min.js'></script>
+    <style>
+      body {
+        font-family: 'Roboto', 'Microsoft JhengHei', sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      div.prj-cursor {
+        margin: 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="fb-root"></div>
+
+    <script>
+      function statusChangeCallback (response) {
+        if (response.status === "connected") {
+          console.log("Logged into your app and Facebook");
+
+          var grantedScopes = response.authResponse.grantedScopes;
+          if (grantedScopes.match("email")) {
+            var accessToken = response.authResponse.accessToken;
+            var expiresIn = response.authResponse.expiresIn;
+            var signedRequest = response.authResponse.signedRequest;
+            var userID = response.authResponse.userID;
+            testAPI(accessToken, expiresIn, signedRequest, userID);
+          } else {
+            // checkPermission();
+            openDialog();
+          }
+
+          
+            // {
+            //     status: "connected",     // 登入狀態
+            //     authResponse: {
+            //         accessToken: "...",  // 含有這位應用程式用戶的存取權杖
+            //         expiresIn:"...",     // 以 UNIX 時間顯示權杖何時到期並需要再次更新
+            //                              // ex. 4609
+            //                              // 2017-12-06 02:44:00.860	--> 2017-12-06 04:00:49.860
+            //         grantedScopes:"...", // 由於 fblogin() 中, return_scopes 為 true 才有此筆資訊
+            //                              // 用戶所授權的資訊 ex. public_profile,email
+            //         signedRequest:"...", // 已簽署的參數，其中包含這位應用程式用戶的資訊
+            //         userID:"..."         // 是這位應用程式用戶的編號
+            //     }
+            // }
+          
+        } else if (response.status === "not_authorized") {
+          console.log("The person is logged into Facebook, but not your app");
+        } else {
+          console.log("The person is not logged into Facebook");
+        }
+      }
+
+      function testAPI (accessToken, expiresIn, signedRequest, userID) {
+        console.log("Welcome!  Fetching your information....");
+        var pm = ["email", "id", "cover", "name", "first_name", "last_name", "age_range", "link", "gender", "locale", "picture", "timezone", "updated_time", "verified"];
+        FB.api("/me", {locale: 'zh_TW'}, {fields: pm}, function (res) {
+          var id = res.id;
+          var cover = res.cover;
+          var name = res.name;
+          var first_name = res.first_name;
+          var last_name = res.last_name;
+          var age_range = res.age_range;
+          var link = res.link;
+          var gender = res.gender;
+          if(gender=="male")
+            gender="男";
+          else if(gender=="female")
+            gender="女";
+          else
+            gender="第三性";
+          var locale = res.locale;
+          var picture = res.picture;
+          var timezone = res.timezone;
+          var updated_time = res.updated_time;
+          var verified = res.verified;
+          var email = res.email;
+
+          console.log("success login!")
+          console.log(res);
+          /*
+            id           // MID               ex. 311357532692834
+            cover        // 封面照片
+            name         // 姓名              ex. WenBin Ho
+            first_name   // 姓                ex. WenBin
+            last_name    // 名                ex. Ho
+            age_range    // 年齡範圍 (不準確)  ex. {min: 21}
+            link         // FB個人頁面連結     ex. https://www.facebook.com/app_scoped_user_id/1895254997155565/
+            gender       // 性別              ex. male
+            locale       // 地區和語言         ex. zh_TW
+            picture      // 大頭貼
+            timezone     // 時區              ex. 8 (GMT+8)
+            updated_time // 最後編輯時間       ex. 2017-11-19T00:40:10+0000
+            verified     // 驗證 (功能不明)    ex. true
+            email        // 電子信箱
+          */
+
+          // http://graph.facebook.com/1895254997155565/picture?type=square
+
+          // 自行寫 ajax 將資料傳至 api
+          var act = {};
+          act.act = "fblogin";
+          act.account=id;
+          act.name=name;
+          act.email=email;
+          act.sex=gender;
+          act.pwd = accessToken;
+          act.permission = 1;
+          console.log(JSON.stringify(act));
+          $.ajax({
+            url:'../API/controller/user.php',
+            data:JSON.stringify(act),
+            // data:JSON.stringify(postdata),
+            type: 'POST',
+            // async:false,
+            success:function(r){
+                    result=JSON.parse(r);
+                    console.log(result);
+                    // if(result.status==200){
+                    //     location.href = "all_job.html";
+                    // }else{
+                    //     alert(result.msg);
+                    // }
+                    // alert(result[0].messege);
+            },
+            error:function(err){
+                    console.log(err);
+            }
+          });
+        })
+      }
+
+      function checkLoginState () {
+        FB.getLoginStatus(function (response) {
+          statusChangeCallback(response);
+        });
+      }
+
+      function checkPermission () {
+        FB.login(function (response) {
+          if (response.authResponse) {
+            var grantedScopes = response.authResponse.grantedScopes;
+            if (grantedScopes.match("email")) {
+              statusChangeCallback(response);
+            } else {
+              alert("由於沒有提供電子信箱，無法成功登入 (╥﹏╥)");
+              console.log("User results still don't provide e-mail information");
+            }
+          }
+        }, { scope: "email", auth_type: "rerequest", return_scopes: true });
+      }
+
+      function fblogin () {
+        FB.login(function (response) {
+          if (response.authResponse) {
+            statusChangeCallback(response);
+            console.log(response);
+          } else {
+            console.log("User cancelled login or did not fully authorize");
+          }
+        }, { scope: "public_profile,email", return_scopes: true });
+      }
+
+      function fblogout () {
+        FB.logout(function (response) {
+          // Person is now logged out
+        });
+      }
+
+      function openDialog() {
+        document.getElementById("id01").style.display = "block";
+      }
+
+      function closeDialog() {
+        document.getElementById("id01").style.display = "none";
+      }
+
+      var appId = "535846410084842";  // 311357532692834
+      var version = "v2.11";  // v2.11
+
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: appId,
+          cookie: true,
+          xfbml: true,
+          version: version
+        });
+
+        FB.AppEvents.logPageView();
+
+        // checkLoginState();
+      };
+
+      (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/zh_TW/sdk.js";
+        js.src = "https://connect.facebook.net/zh_TW/sdk/debug.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, "script", "facebook-jssdk"));
+    </script>
+
+    <div
+      class="w3-indigo w3-round w3-padding w3-center prj-cursor"
+      onclick="fblogin();">Facebook 登入</div>
+      <div
+      class="w3-indigo w3-round w3-padding w3-center prj-cursor"
+      onclick="fblogout();">Facebook 登出</div>
+    <div id="id01" class="w3-modal">
+      <div class="w3-modal-content w3-animate-top w3-card-4">
+        <header class="w3-container w3-teal">
+          <span class="w3-button w3-display-topright" onclick="closeDialog();">&times;</span>
+          <h2>無法登入</h2>
+        </header>
+        <div class="w3-container w3-padding-16">
+          <p>由於沒有提供電子信箱，無法成功登入 (╥﹏╥)</p>
+          <p>是否要重新檢查一次呢？</p>
+          <div class="w3-right">
+            <button class="w3-btn w3-blue" onclick="closeDialog(); checkPermission();">確定</button>
+            <button class="w3-btn w3-gray" onclick="closeDialog();">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

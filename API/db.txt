@@ -1,0 +1,34 @@
+資料庫
+user
+	acoount
+	pwd
+	name
+	sex
+	birthday
+	department
+	phone
+	email
+	resume
+	permission
+		1=學生
+		2=雇主
+		3=管理員
+ncnucase
+	id
+	title
+	content
+	author
+	property
+	type
+	time
+	level
+	position
+	salary
+likelist
+	id
+	cid
+	uid
+collection
+	id
+	cid
+	uid

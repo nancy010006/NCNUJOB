@@ -1,0 +1,33 @@
+#cover { 
+  width: 100vw; 
+  height: 100vh; 
+  background-image: url(../img/51136916_43758308.6256598.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+@keyframes caret {
+  50% { border-color: transparent; }
+}
+@keyframes typing {
+  from { width: 0 }
+}
+.title{
+  margin: 0;
+  width: 550px;
+  border-right: .05em solid;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2.5s steps(7),
+    caret 1s steps(1) infinite;
+  position: relative;
+  top: 45%;
+  left: 30%;
+  font-size: 140px;
+  font-family:monospace
+}
+.title:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}

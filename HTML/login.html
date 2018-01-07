@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <link href="../img/logo.ico" rel="SHORTCUT ICON">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="../css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="../css/loginform.css">
+  <script src='../js/jquery.min.js'></script>
+  <script src="../js/login.js" type="text/javascript"></script>
+  <script type="text/javascript" src="../js/includeBar.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="top">
+      <h1 id="title" class="hidden" onclick="start()"><span id="logo">NCNU <span>JOB</span></span></h1>
+    </div>
+    <form id="loginform">
+      <div class="login-box animated fadeInUp">
+        <div class="box-header">
+          <h2>Log In</h2>
+        </div>
+        <label for="username">Username</label>
+        <br/>
+        <input type="text" name="account">
+        <br/>
+        <label for="password">Password</label>
+        <br/>
+        <input type="password" name="pwd">
+        <br/>
+        <button type="submit">Sign In</button>
+        <br/>
+        <a href="#"><p class="small">Forgot your password?</p></a>
+      </div>
+    </form>
+  </div>
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+<script>
+function animationOut(i){}
+function animationIn(i){}
+//well, you need modify the cubeTransition.js file
+//delete the two functions if you dont need this kinda after/before swtching's animation.
+</script>
+<script src='../js/wheel-indicator.js'></script>
+<script src="../js/jquery.touchSwipe.js"></script>
+<script src="../js/cubeTransition.js"></script>
+
+</body>
+</html>

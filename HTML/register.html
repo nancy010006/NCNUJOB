@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="../js/includeBar.js"></script>
+  <script type="text/javascript" src="../js/register.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/all_job.css">
+  <link rel="stylesheet" type="text/css" href="../css/resume.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+  <!--側邊選單-->
+<div id="sidebar">
+</div>
+<!-- 固定欄位(上排選單) -->
+<div id="main">
+</div>
+
+  <div class="Content">
+    <div class="resume_form">
+      <form id="registerForm">
+    <ul class="form-style-1">
+    <li><label>帳號<span class="required">*</span></label><input type="text" name="account" class="field-long" required/>
+    </li>
+    <li><label>密碼<span class="required">*</span></label><input type="text" name="pwd" class="field-long" required/>
+    </li>
+    <li><label>確認密碼<span class="required">*</span></label><input type="text" name="pwdconfirm" class="field-long" required/>
+    </li>
+    <li><label>姓名<span class="required">*</span></label><input type="text" name="name" class="field-long" required/>
+    </li>
+    <li>
+        <label>性別<span class="required">*</span></label>
+        <input type="radio" name="sex" value="男" required/>男<input type="radio" name="sex" value="女" required/>女
+    </li>
+    <li>
+        <label>生日 <span class="required">*</span></label>
+        <input type="date" name="birthday" class="field-long" required/>
+    </li>
+    <li>
+        <label>Email <span class="required">*</span></label>
+        <input type="email" name="email" class="field-long" required/>
+    </li>
+    <li>
+        <label>TEL <span class="required">*</span></label>
+        <input type="tel" name="phone" class="field-long" required/>
+    </li>
+    <li>
+        <label>科系</label>
+        <select name="department" class="field-select" required/>
+          <option value="中文系">中文系</option>
+          <option value="國比系">國比系</option>
+          <option value="社工系">社工系</option>
+          <option value="外文系">外文系</option>
+          <option value="歷史系">歷史系</option>
+          <option value="公行系">公行系</option>
+          <option value="教政系">教政系</option>
+          <option value="東南亞系">東南亞系</option>
+          <option value="經濟系">經濟系</option>
+          <option value="國企系">國企系</option>
+          <option value="資管系">資管系</option>
+          <option value="財金系">財金系</option>
+          <option value="資工系">資工系</option>
+          <option value="土木系">土木系</option>
+          <option value="電機系">電機系</option>
+          <option value="應化系">應化系</option>
+          <option value="觀餐系">觀餐系</option>
+        </select>
+    </li>
+    <li>
+        <input type="submit" value="Submit" class="GoButton" />
+    </li>
+</ul>   
+</form>
+    </div>
+
+  
+  </div>
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+$primary-color: #243040;
+
+body {
+    font-family: 'Architects Daughter', sans-serif;
+}
+
+body {
+    background-color: #DDEEBC;
+    margin: 0;
+}
+#topbar { 
+    background-color: #FFECC7; 
+    height: 50px;
+}
+ul{
+    position: relative;
+    left: 30px;
+    margin: 0;
+}
+img{
+    top: 10PX;
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+#loginarea{
+    /*position: relative;*/
+    margin: auto;
+    width: 60%;
+    /*border: 3px solid #73AD21;*/
+    padding: 10px;
+}
+#loginform{
+    padding: 10px;
+    position: relative;
+    height: 170px;
+    width: 500px;
+    background-color: #afc;
+    margin-top: 16px !important;
+    text-align:center;
+    line-height:30px;
+}
+#boss{
+    position: relative;
+    padding: 10px;
+    top: -190px;
+    left: 530px;
+    height: 40px;
+    width: 100px;
+    background-color: #adc;
+}
+#student{
+    position: relative;
+    padding: 10px;
+    top: -180px;
+    left: 530px;
+    height: 40px;
+    width: 100px;
+    background-color: #afc;
+}
+#register{
+    position: relative;
+    padding: 10px;
+    top: -170px;
+    left: 530px;
+    height: 40px;
+    width: 100px;
+    background-color: #aac;
+}
+/* entire container, keeps perspective */
+.flip-container {
+    perspective: 1000;
+}
+    /* flip the pane when hovered */
+    .flip-container.test .flipper {
+        transform: rotateY(180deg);
+    }
+
+.flip-container, .front, .back {
+    width: 320px;
+    height: 480px;
+}
+
+/* flip speed goes here */
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+    backface-visibility: hidden;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+    z-index: 2;
+    background-color: #afc;
+}
+
+/* back, initially hidden pane */
+.back {
+    transform: rotateY(180deg);
+    background-color: #fcc;
+}
+.back2 {
+    transform: rotateY(180deg);
+}

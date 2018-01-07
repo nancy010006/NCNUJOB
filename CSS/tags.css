@@ -1,0 +1,14 @@
+input[type="checkbox"] {
+	display: none;
+	size: 20px;
+}
+input[type="checkbox"] + label {
+	display: inline-block;
+	background-color: #ccc;
+	cursor: pointer;
+	padding: 4px 8px;
+	margin: 3px;
+}
+input[type="checkbox"]:checked + label {
+	background-color: #4D9FBE;
+}
