@@ -13,94 +13,140 @@
   <link rel="stylesheet" type="text/css" href="../CSS/bar.css">
   <link rel="stylesheet" type="text/css" href="../CSS/all_job.css">
   <link rel="stylesheet" type="text/css" href="../CSS/page.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <!--側邊選單-->
-<div id="sidebar">
-</div>
-<!--上排選單-->
-<div id="main">
-</div>
+<div id="nav"></div>
 <div class="Content">
   <!--篩選工作區塊-->
   <div class="tags">
-    <h3>包含</h3>
-    <form id="tags">      
-      工作性質:
-      <input name="property" type="checkbox" class="tagsbutton" id="short" value="短期"/>
-      <label for="short">短期</label>
-      <input name="property" type="checkbox" value="長期" class="tagsbutton" id="long" />
-      <label for="long">長期</label>
-      <input name="property" type="checkbox" value="暑假" class="tagsbutton" id="summer" />
-      <label for="summer">暑假</label>
-      <input name="property" type="checkbox" value="寒假" class="tagsbutton" id="winter" />
-      <label for="winter">寒假</label>
-      <input name="property" type="checkbox" value="實習" class="tagsbutton" id="intern" />
-      <label for="intern">實習</label><br>
+    <form id="tags" class="mx-auto" style="max-width:46rem">
+      <div class="row">
+        <div class="col-form-label col-md-2">工作性質：</div>
+        <div class="row col-md-10">  
+          <div class="form-group col-md-2">
+            <input name="property" type="checkbox" class="tagsbutton" id="short" value="短期"/>
+            <label for="short">短期</label>
+          </div>
+          <div class="form-group col-md-2">
+            <input name="property" type="checkbox" value="長期" class="tagsbutton" id="long" />
+            <label for="long">長期</label>
+          </div>
+          <div class="form-group col-md-2">
+            <input name="property" type="checkbox" value="暑假" class="tagsbutton" id="summer" />
+            <label for="summer">暑假</label>
+          </div>
+          <div class="form-group col-md-2">
+            <input name="property" type="checkbox" value="寒假" class="tagsbutton" id="winter" />
+            <label for="winter">寒假</label>
+          </div>
+          <div class="form-group col-md-2">
+            <input name="property" type="checkbox" value="實習" class="tagsbutton" id="intern" />
+            <label for="intern">實習</label>
+          </div>
+          <div class="form-group col-md-2">
+            <input name="property" type="checkbox" value="臨時" class="tagsbutton" id="parttime" />
+            <label for="parttime">臨時</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-form-label col-md-2">工作類型：</div>
+          <div class="row col-md-10">
+            <div class="form-group col-md-2">
+              <input name="type" type="checkbox" value="餐飲" class="tagsbutton" id="catering" />
+              <label for="catering">餐飲</label>
+            </div>
+            <div class="form-group col-md-2">
+              <input name="type" type="checkbox" value="課輔" class="tagsbutton"id="teach" />
+              <label for="teach">課輔</label>
+            </div>
+            <div class="form-group col-md-2">
+              <input name="type" type="checkbox" value="房務" class="tagsbutton" id="clean" />
+              <label for="clean">房務</label>
+            </div>
+            <div class="form-group col-md-2">
+              <input name="type" type="checkbox" value="資訊" class="tagsbutton" id="info" />
+              <label for="info">資訊</label>
+            </div>
+            <div class="form-group col-md-2">
+              <input name="type" type="checkbox" value="助理" class="tagsbutton" id="assist" />
+              <label for="assist">助理</label>
+            </div>
+            <div class="form-group col-md-2">
+              <input name="type" type="checkbox" value="其他" class="tagsbutton" id="other" />
+              <label for="other">其他</label>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-form-label col-md-2">工作時間：</div>
+        <div class="row col-md-10">
+            <div class="form-group col-md-2">
+                <input name="time" type="checkbox" value="平日" class="tagsbutton" id="normal" />
+                <label for="normal">平日</label>
+              </div>
+              <div class="form-group col-md-2">
+                <input name="time" type="checkbox" value="假日" class="tagsbutton" id="weekend" />
+                <label for="weekend">假日</label>
+              </div>
+              <div class="form-group col-md-2">
+                <input name="time" type="checkbox" value="早班" class="tagsbutton" id="am" />
+                <label for="am">早班</label>
+              </div>
+              <div class="form-group col-md-2">
+                <input name="time" type="checkbox" value="晚班" class="tagsbutton" id="pm" />
+                <label for="pm">晚班</label>
+              </div>
+              <div class="form-group col-md-2">
+                <input name="time" type="checkbox" value="排班" class="tagsbutton" id="rand" />
+                <label for="rand">排班</label>
+              </div>
+              <div class="form-group col-md-2">
+                <input name="time" type="checkbox" value="夜班" class="tagsbutton" id="night" />
+                <label for="night">夜班</label>
+              </div>
+        </div>
 
-      工作類型:
-      <input name="type" type="checkbox" value="餐飲" class="tagsbutton" id="catering" />
-      <label for="catering">餐飲</label>
-      <input name="type" type="checkbox" value="課輔" class="tagsbutton" id="teach" />
-      <label for="teach">課輔</label>
-      <input name="type" type="checkbox" value="房務" class="tagsbutton" id="clean" />
-      <label for="clean">房務</label>
-      <input name="type" type="checkbox" value="資訊" class="tagsbutton" id="info" />
-      <label for="info">資訊</label>
-      <input name="type" type="checkbox" value="助理" class="tagsbutton" id="assist" />
-      <label for="assist">助理</label><br>
-
-      工作時間:
-      <input name="time" type="checkbox" value="平日" class="tagsbutton" id="normal" />
-      <label for="normal">平日</label>
-      <input name="time" type="checkbox" value="假日" class="tagsbutton" id="weekend" />
-      <label for="weekend">假日</label>
-      <input name="time" type="checkbox" value="早班" class="tagsbutton" id="am" />
-      <label for="am">早班</label>
-      <input name="time" type="checkbox" value="晚班" class="tagsbutton" id="pm" />
-      <label for="pm">晚班</label>
-      <input name="time" type="checkbox" value="排班" class="tagsbutton" id="rand" />
-      <label for="rand">排班</label><br>
-      <br>
-      <!-- 工作薪資:
-      <input name="薪資" type="number" class="salary_range" />~<input name="薪資" type="number" class="salary_range">元/小時
-      <input type="submit" value="GO" class="GoButton"> -->
+      </div>
+      <div id="lenarea" class="text-right">
+        <span>一次顯示</span>
+        <select id="len">
+          <option value="10">10</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>  
+        <span>項</span>
+      </div>
     </form>
   </div>
-  <div id="lenarea">
-    <span>一次顯示</span>
-    <select id="len">
-      <option value="10">10</option>
-      <option value="50">50</option>
-      <option value="100">100</option>
-    </select>  
-    <span>項</span>
-  </div>
-  <select class="order">
-    排序:
-    <option>發布日期(新→舊)</option>
-    <option>發布日期(舊→新)</option>
-  </select> 
+
+  
+  
   <div id="table">
     <table id="job_info"class="job_info">
-      <thead>
-        <tr>
-          <th>標題</th>
-          <th>薪資</th>
-          <th>收藏</th>
-          <th>投送履歷</th>
-          <th>最後編輯日期</th>
-          <th>瀏覽次數</th>
-        </tr>
-      </thead>
+      <div>
+          <thead>
+              <tr>
+                <th>標題</th>
+                <th>薪資</th>
+                <th>收藏</th>
+                <th>投送履歷</th>
+                <th>最後編輯日期</th>
+                <th>瀏覽次數</th>
+              </tr>
+            </thead>
+            
+      </div>
       <tbody id="casearea">
         
       </tbody>
     </table>
-    </div>
   </div>
+</div>
   <div id="page">
     <ul class="pagination">
       <li><a href="#">«</a></li>
@@ -113,13 +159,13 @@
 
 <script>
 function w3_open() {
-  document.getElementById("main").style.marginLeft = "15%";
+  document.getElementById("nav").style.marginLeft = "15%";
   document.getElementById("mySidebar").style.width = "15%";
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("openNav").style.display = 'none';
 }
 function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("nav").style.marginLeft = "0%";
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("openNav").style.display = "inline-block";
 }

@@ -6,13 +6,13 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-  <script src='../js/jquery.min.js'></script>
-  <script type="text/javascript" src="../js/getUser.js"></script>
-  <script type="text/javascript" src="../js/includeBar.js"></script>
-  <script type="text/javascript" src="../js/publish.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/publish.css">
-  <link rel="stylesheet" type="text/css" href="../css/bar.css">
-  <link rel="stylesheet" type="text/css" href="../css/page.css">
+  <script src='../JS/jquery.min.js'></script>
+  <script type="text/javascript" src="../JS/getUser.js"></script>
+  <script type="text/javascript" src="../JS/includeBar.js"></script>
+  <script type="text/javascript" src="../JS/publish.js"></script>
+  <link rel="stylesheet" type="text/css" href="../CSS/publish.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/bar.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/page.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
@@ -21,7 +21,7 @@
 <div id="sidebar">
 </div>
 <!--上排選單-->
-<div id="main">
+<div id="nav">
 </div>
 <!-- <button id="coverl">找工作</button>
 <button id="coverr">找員工</button> -->
@@ -119,13 +119,13 @@
 
 <script>
 function w3_open() {
-  document.getElementById("main").style.marginLeft = "15%";
+  document.getElementById("nav").style.marginLeft = "15%";
   document.getElementById("mySidebar").style.width = "15%";
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("openNav").style.display = 'none';
 }
 function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("nav").style.marginLeft = "0%";
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("openNav").style.display = "inline-block";
 }

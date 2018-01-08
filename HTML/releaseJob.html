@@ -3,17 +3,17 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" >
-  <link href="../img/logo.ico" rel="SHORTCUT ICON">
+  <link href="../IMG/logo.ico" rel="SHORTCUT ICON">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link href="../css/style.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="../css/bar.css">
-  <link rel="stylesheet" type="text/css" href="../css/resume.css">
-  <link rel="stylesheet" type="text/css" href="../css/tags.css">
-  <script src='../js/jquery.min.js'></script>
-  <script type="text/javascript" src="../js/getUser.js"></script>
-  <script type="text/javascript" src="../js/checkLogin.js"></script>
-  <script type="text/javascript" src="../js/includeBar.js"></script>
-  <script type="text/javascript" src="../js/releaseJob.js"></script>
+  <link rel="stylesheet" type="text/css" href="../CSS/bar.css">
+  <script src='../JS/jquery.min.js'></script>
+  <script src="../JS/login.js" type="text/javascript"></script>
+  <script type="text/javascript" src="../JS/includeBar.js"></script>
+  <script type="text/javascript" src="../JS/releaseJob.js"></script>
 </head>
 
 <body>
@@ -21,107 +21,150 @@
 <div id="sidebar">
 </div>
 <!-- 固定欄位(上排選單) -->
-<div id="main">
+<div id="nav">
 </div>
 
 <div class="Content">
-  <div class="resume_form">
-    <h1>工作發布</h1>
-    <form id="releaseJob">
-<ul class="form-style-1">
-    <li><label>工作名稱 <span class="required">*</span></label><input type="text" name="title" class="field-divided"/></li>
-    <li>
-    <li><label>工作地點 <span class="required">*</span></label><input type="text" name="position" class="field-divided"/></li>
-    <li>
-        <label>時薪 <span class="required">*</span></label>
-        <input type="text" name="salary" class="field-divided" />
-    </li>
-    <li>
-        <label>詳細內容/備註 <span class="required">*</span></label>
-        <textarea name="content" id="field5" class="field-long field-textarea"></textarea>
-    </li>
-    <li>
-        <label>聯絡人 <span class="required">*</span></label>
-        <input type="text" name="author" class="field-long" />
-    </li>
-    <li>
-        <label>連絡電話 <span class="required">*</span></label>
-        <input type="tel" name="phone" class="field-long" />
-    </li>
-    <li>
-        <label>電子信箱 <span class="required">*</span></label>
-        <input type="email" name="email" class="field-long" />
-    </li>
-    <li>
-        <label>工作性質:</label>
-        <input name="property" type="checkbox" class="tagsbutton" id="short" value="短期"/>
-        <label for="short">短期</label>
-        <input name="property" type="checkbox" value="長期" class="tagsbutton" id="long" />
-        <label for="long">長期</label>
-        <input name="property" type="checkbox" value="暑假" class="tagsbutton" id="summer" />
-        <label for="summer">暑期</label>
-        <input name="property" type="checkbox" value="寒假" class="tagsbutton" id="winter" />
-        <label for="winter">寒假</label>
-        <input name="property" type="checkbox" value="實習" class="tagsbutton" id="intern" />
-        <label for="intern">實習</label><br>
-    </li>
-    <li>
-      <label>工作類型:</label>
-      <input name="type" type="checkbox" value="餐飲" class="tagsbutton" id="catering" />
-      <label for="catering">餐飲</label>
-      <input name="type" type="checkbox" value="課輔" class="tagsbutton" id="teach" />
-      <label for="teach">課輔</label>
-      <input name="type" type="checkbox" value="房務" class="tagsbutton" id="clean" />
-      <label for="clean">房務</label>
-      <input name="type" type="checkbox" value="資訊" class="tagsbutton" id="info" />
-      <label for="info">資訊</label>
-      <input name="type" type="checkbox" value="助理" class="tagsbutton" id="assist" />
-      <label for="assist">助理</label><br>
-    </li>
-    <li>
-      <label>工作時間:</label>
-      <input name="time" type="checkbox" value="平日" class="tagsbutton" id="normal" />
-      <label for="normal">平日</label>
-      <input name="time" type="checkbox" value="假日" class="tagsbutton" id="weekend" />
-      <label for="weekend">假日</label>
-      <input name="time" type="checkbox" value="早班" class="tagsbutton" id="am" />
-      <label for="am">早班</label>
-      <input name="time" type="checkbox" value="晚班" class="tagsbutton" id="pm" />
-      <label for="pm">晚班</label>
-      <input name="time" type="checkbox" value="排班" class="tagsbutton" id="rand" />
-      <label for="rand">排班</label><br>
-    </li>
-    <li>
-      <label>級別限制:</label>
-      <input name="level" type="checkbox" value="大一" class="tagsbutton" id="first" />
-      <label for="first">大一</label>
-      <input name="level" type="checkbox" value="大二" class="tagsbutton" id="second" />
-      <label for="second">大二</label>
-      <input name="level" type="checkbox" value="大三" class="tagsbutton" id="third" />
-      <label for="third">大三</label>
-      <input name="level" type="checkbox" value="大四" class="tagsbutton" id="forth" />
-      <label for="forth">大四</label>
-      <input name="level" type="checkbox" value="碩班" class="tagsbutton" id="master" />
-      <label for="master">碩班</label>
-      <br>
-    </li>
-    <li>
-        <input type="submit" value="Submit" class="GoButton" />
-    </li>
-</ul>   
-</form>
+    <div class="container px-5 my-5 resume_form">
+    
+    <form class="mx-auto " style="max-width: 46rem">
+            <legend class="mx-auto my-auto py-5">工作發佈</legend>
+    <fieldset>
+        
+        <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-form-label">工作名稱</label>
+                    <input type="text" class="form-control" id="job_name" required/>
+                </div>
+        </div>
+        <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-form-label">工作地點</label>
+                    <input type="text" class="form-control" id="" required/>
+                </div>
+        </div>
+        <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-form-label">工作內容</label>
+                        <textarea class="form-control" id="content"rows="5"></textarea>
+                </div>
+        </div>
+        <div class="row">
+                <div class="form-group col-md-6">
+                    <label class="col-form-label">聯絡人</label>
+                    <input type="text" class="form-control" id="" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-form-label">聯絡電話</label>
+                    <input type="text" class="form-control" id="" required>
+                </div>
+        </div>
+        <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-form-label">電子郵件</label>
+                        <input type="text" class="form-control" id="" required>
+                    </div>
+                </div>
+        <div class="row">
+                <div class="form-group col-md-6">
+                    <label class="col-form-label">工作性質</label>
+                    <div class="form-check mx-1">
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="shop_time" value="短期">短期
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="長期">長期
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="暑假">暑假
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="寒假">寒假
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="實習">實習
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input"type="checkbox" id="" value="臨時">臨時
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-form-label">工作類型</label>
+                    <div class="form-check row mx-1">
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="shop_time" value="餐飲">餐飲
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="課輔">課輔
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="房務">房務
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="資訊">資訊
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="助理">助理
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="其他">其他
+                        </label>
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+                <div class="form-group col-md-6">
+                    <label class="col-form-label">工作時間</label>
+                    <div class="form-check row mx-1">
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="平日">平日
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="假日">假日
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="早班">早班
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="晚班">晚班
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="排班">排班
+                        </label>
+                        <label class="form-check-label col-md-3">
+                            <input class="form-check-input" type="checkbox" id="" value="大夜班">夜班
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-form-label">薪資</label>
+                    <div class="form-check mx-1">
+                        <label class="mx-2 row"><input type="radio" name="optradio" id="salary" value="day">時薪
+                        <input type="text" name="optradio"/></label>
+                        <label class="mx-2 row"><input type="radio" name="optradio" id="slarly" value="">其他(請詳述於工作內容中)</label>
+                    </div>
+                </div>
+        </div>
+        <div class="text-center mx-auto">
+            <button type="submit"class="btn btn-success">儲存</button>
+            <span class="btn btn-danger">取消</span>
+        </div>
+    </fieldset>    
+    </form>
+    
     </div>
 </div>
 
 <script>
 function w3_open() {
-  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("nav").style.marginLeft = "25%";
   document.getElementById("mySidebar").style.width = "25%";
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("openNav").style.display = 'none';
 }
 function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("nav").style.marginLeft = "0%";
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("openNav").style.display = "inline-block";
 }

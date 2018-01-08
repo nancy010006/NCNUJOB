@@ -1,6 +1,53 @@
-<div class="w3-container topbar">
-    <button id="openNav" class="w3-button w3-xlarge" onclick="w3_open()">&#9776;</button>
-    <img src="../img/logo.png" class="logo">
-    <span>血汗暨南</span>
-    <span id="user"></span>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+  </head>
+  <body>
+    <nav class="navbar is-transparent">
+        <div class="navbar-brand">
+            <div>血汗暨南</div>
+          <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      <div id="navbarExampleTransparentExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" class="navbar-link" href="all_job.html"　>
+            所有職缺
+          </a>
+          <a class="navbar-item" class="navbar-link" href="login.html"　>
+            我要註冊
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="all_job.html">
+              會員專區
+            </a>
+            <div class="navbar-dropdown is-boxed">
+              <a class="navbar-item" href="publish.html">
+                已發布文章
+              </a>
+              <a class="navbar-item" href="likelist.html">
+                職缺收藏
+              </a>
+              <a class="navbar-item" href="＃">
+                應徵紀錄
+              </a>
+              <a class="navbar-item" href="resume.html">
+                填寫履歷
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item" id="user">
+            </div>
+        </div>
+      </body>
+</html>
