@@ -12,7 +12,7 @@ $(document).ready(function(){
 	})
 	// alert(user);
 	$.get("bar.html",function(data){
-		$("#main").html(data);
+		$("#nav").html(data);
 		$("#user").append("歡迎，"+user);
 		if(user!="訪客")
 			$("#user").append("<a href='#' onclick='logout()'>登出</a>");
