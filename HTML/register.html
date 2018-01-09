@@ -1,98 +1,114 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-  <script type="text/javascript" src="../js/includeBar.js"></script>
-  <script type="text/javascript" src="../js/register.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/all_job.css">
-  <link rel="stylesheet" type="text/css" href="../css/resume.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <link href="../IMG/logo.ico" rel="SHORTCUT ICON">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/bar.css">
+  <script src='../JS/jquery.min.js'></script>
+  <script src="../JS/login.js" type="text/javascript"></script>
+  <script type="text/javascript" src="../JS/includeBar.js"></script>
+  <script type="text/javascript" src="../JS/register.js"></script>
 </head>
 
 <body>
-  <!--側邊選單-->
-<div id="sidebar">
-</div>
 <!-- 固定欄位(上排選單) -->
-<div id="main">
+<div id="nav">
 </div>
 
-  <div class="Content">
-    <div class="resume_form">
-      <form id="registerForm">
-    <ul class="form-style-1">
-    <li><label>帳號<span class="required">*</span></label><input type="text" name="account" class="field-long" required/>
-    </li>
-    <li><label>密碼<span class="required">*</span></label><input type="text" name="pwd" class="field-long" required/>
-    </li>
-    <li><label>確認密碼<span class="required">*</span></label><input type="text" name="pwdconfirm" class="field-long" required/>
-    </li>
-    <li><label>姓名<span class="required">*</span></label><input type="text" name="name" class="field-long" required/>
-    </li>
-    <li>
-        <label>性別<span class="required">*</span></label>
-        <input type="radio" name="sex" value="男" required/>男<input type="radio" name="sex" value="女" required/>女
-    </li>
-    <li>
-        <label>生日 <span class="required">*</span></label>
-        <input type="date" name="birthday" class="field-long" required/>
-    </li>
-    <li>
-        <label>Email <span class="required">*</span></label>
-        <input type="email" name="email" class="field-long" required/>
-    </li>
-    <li>
-        <label>TEL <span class="required">*</span></label>
-        <input type="tel" name="phone" class="field-long" required/>
-    </li>
-    <li>
-        <label>科系</label>
-        <select name="department" class="field-select" required/>
-          <option value="中文系">中文系</option>
-          <option value="國比系">國比系</option>
-          <option value="社工系">社工系</option>
-          <option value="外文系">外文系</option>
-          <option value="歷史系">歷史系</option>
-          <option value="公行系">公行系</option>
-          <option value="教政系">教政系</option>
-          <option value="東南亞系">東南亞系</option>
-          <option value="經濟系">經濟系</option>
-          <option value="國企系">國企系</option>
-          <option value="資管系">資管系</option>
-          <option value="財金系">財金系</option>
-          <option value="資工系">資工系</option>
-          <option value="土木系">土木系</option>
-          <option value="電機系">電機系</option>
-          <option value="應化系">應化系</option>
-          <option value="觀餐系">觀餐系</option>
-        </select>
-    </li>
-    <li>
-        <input type="submit" value="Submit" class="GoButton" />
-    </li>
-</ul>   
-</form>
+<div class="container">
+    <div class="px-5 resume_form">
+        <form id="registerForm" class="mx-auto" style="max-width: 46rem">
+            <legend class="mx-auto my-auto py-5">註冊</legend>
+            <fieldset class="px-5 py-5">
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-form-label">姓名</label>
+                            <input name="name" type="text" class="form-control" id="job_name" required>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-form-label">帳號</label>
+                            <input name="account" type="text" class="form-control" id="job_name" required>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="col-form-label">密碼</label>
+                        <input name="pwd" type="text" class="form-control" id="" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-form-label">密碼確認</label>
+                        <input name="pwdconfirm" type="text" class="form-control" id="" required>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="form-group col-md-4">
+                            <label class="col-form-label">性別</label>
+                            <label class="row">
+                                <label class="col-md-6">
+                                    <input name="sex" type="radio" value="男" required>男
+                                </label>
+                                <label class="col-md-6">
+                                    <input name="sex" type="radio" value="女" required>女
+                                </label>
+                            </label>
+                        </div>
+                        <div class="form-group col-md-4　input-append date form_datetime">
+                            <label class="col-form-label">生日</label>
+                            <input name="birthday" type="date" class="form-control" id="birthday" value="birthday" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="col-form-label">科系</label>
+                            <select name="department" class="form-control" required>
+                                <option value=""></option>
+                                <option value="中文系">中文系</option>
+                                <option value="國比系">國比系</option>
+                                <option value="社工系">社工系</option>
+                                <option value="外文系">外文系</option>
+                                <option value="歷史系">歷史系</option>
+                                <option value="公行系">公行系</option>
+                                <option value="教政系">教政系</option>
+                                <option value="東南亞系">東南亞系</option>
+                                <option value="經濟系">經濟系</option>
+                                <option value="國企系">國企系</option>
+                                <option value="資管系">資管系</option>
+                                <option value="財金系">財金系</option>
+                                <option value="資工系">資工系</option>
+                                <option value="土木系">土木系</option>
+                                <option value="電機系">電機系</option>
+                                <option value="應化系">應化系</option>
+                                <option value="觀餐系">觀餐系</option>
+                                <option value="其他">其他</option>
+                            </select>                          
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="col-form-label">聯絡電話</label>
+                        <input name="phone" type="text" class="form-control" id="" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-form-label">電子郵件</label>
+                        <input name="email" type="text" class="form-control" id="" required>
+                    </div>
+                </div>
+                <div class="text-center mx-auto">
+                    <button type="submit" class="btn btn-success">送出</button>
+                    <span class="btn btn-danger">取消</span>
+                </div>
+            </fieldset>
+        </form>
     </div>
-
-  
-  </div>
-<script>
-function w3_open() {
-  document.getElementById("main").style.marginLeft = "25%";
-  document.getElementById("mySidebar").style.width = "25%";
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
-}
-function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
-}
-</script>
+</div>
 
 </body>
 </html>

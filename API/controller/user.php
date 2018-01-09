@@ -52,7 +52,7 @@ switch($act) {
             $result["status"]= addUser($data);
             switch ($result["status"]) {
                 case '200':
-                    $result["msg"] = "新增成功";
+                    $result["msg"] = "註冊成功";
                     break;
                 case '400':
                     $result["msg"] = "帳號重複";
