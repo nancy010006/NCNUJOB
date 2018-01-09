@@ -16,17 +16,17 @@
 </head>
 
 <body>
-  <!--側邊選單-->
-<div id="sidebar">
-</div>
 <!--上排選單-->
 <div id="nav">
 </div>
 <!-- <button id="coverl">找工作</button>
 <button id="coverr">找員工</button> -->
-<div id="title"><h1>已收藏的工作</h1></div>
-<div class="Content">
-    <div id="lenarea">
+
+<div class="container">
+  <div class="tagsarea">
+    <h1>已收藏的工作</h1>
+  </div>
+  <div id="lenarea">
       <span>一次顯示</span>
       <select id="len">
         <option value="10">10</option>
@@ -55,23 +55,9 @@
       <ul class="pagination">
       </ul>
     </div>
-  </div>
+</div>
 
 
-
-<script>
-function w3_open() {
-  document.getElementById("nav").style.marginLeft = "15%";
-  document.getElementById("mySidebar").style.width = "15%";
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
-}
-function w3_close() {
-  document.getElementById("nav").style.marginLeft = "0%";
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
-}
-</script>
 
 </body>
 </html>

@@ -17,18 +17,15 @@
 </head>
 
 <body>
-  <!--側邊選單-->
-<div id="sidebar">
-</div>
 <!-- 固定欄位(上排選單) -->
 <div id="nav">
 </div>
 
-<div class="Content">
-    <div class="container px-5 my-5 resume_form">
+<div class="container">
+    <div class="px-5 resume_form">
         <form class="mx-auto" style="max-width: 46rem">
             <legend class="mx-auto my-auto py-5">我的履歷</legend>
-            <fieldset>
+            <fieldset class="px-5 py-5">
                 <div class="row">
                         <div class="form-group col-md-12">
                             <label class="col-form-label">姓名</label>
@@ -110,20 +107,6 @@
         </form>
     </div>
 </div>
-
-<script>
-function w3_open() {
-  document.getElementById("nav").style.marginLeft = "25%";
-  document.getElementById("mySidebar").style.width = "25%";
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
-}
-function w3_close() {
-  document.getElementById("nav").style.marginLeft = "0%";
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
-}
-</script>
 
 </body>
 </html>

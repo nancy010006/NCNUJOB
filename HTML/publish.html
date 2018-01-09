@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
   <script src='../JS/jquery.min.js'></script>
   <script type="text/javascript" src="../JS/getUser.js"></script>
   <script type="text/javascript" src="../JS/includeBar.js"></script>
@@ -17,119 +16,61 @@
 </head>
 
 <body>
-  <!--側邊選單-->
-<div id="sidebar">
-</div>
-<!--上排選單-->
-<div id="nav">
-</div>
-<!-- <button id="coverl">找工作</button>
+  <div id="nav">
+  </div>
+  <!-- <button id="coverl">找工作</button>
 <button id="coverr">找員工</button> -->
-<div id="title"><h1>您發布的工作</h1></div>
-<div class="Content">
-  <!--篩選工作區塊-->
-  <!-- <div class="tags">
-    工作性質:
-    <input name="property" type="checkbox" class="tagsbutton" id="short" value="短期"/>
-    <label for="short">短期</label>
-    <input name="property" type="checkbox" value="長期" class="tagsbutton" id="long" />
-    <label for="long">長期</label>
-    <input name="property" type="checkbox" value="暑假" class="tagsbutton" id="summer" />
-    <label for="summer">暑期</label>
-    <input name="property" type="checkbox" value="寒假" class="tagsbutton" id="winter" />
-    <label for="winter">寒假</label>
-    <input name="property" type="checkbox" value="實習" class="tagsbutton" id="intern" />
-    <label for="intern">實習</label><br>
 
-    工作類型:
-    <input name="type" type="checkbox" value="餐飲" class="tagsbutton" id="catering" />
-    <label for="catering">餐飲</label>
-    <input name="type" type="checkbox" value="課輔" class="tagsbutton" id="teach" />
-    <label for="teach">課輔</label>
-    <input name="type" type="checkbox" value="房務" class="tagsbutton" id="clean" />
-    <label for="clean">房務</label>
-    <input name="type" type="checkbox" value="資訊" class="tagsbutton" id="info" />
-    <label for="info">資訊</label>
-    <input name="type" type="checkbox" value="助理" class="tagsbutton" id="assist" />
-    <label for="assist">助理</label><br>
-
-    工作時間:
-    <input name="time" type="checkbox" value="平日" class="tagsbutton" id="normal" />
-    <label for="normal">平日</label>
-    <input name="time" type="checkbox" value="假日" class="tagsbutton" id="weekend" />
-    <label for="weekend">假日</label>
-    <input name="time" type="checkbox" value="早班" class="tagsbutton" id="am" />
-    <label for="am">早班</label>
-    <input name="time" type="checkbox" value="晚班" class="tagsbutton" id="pm" />
-    <label for="pm">晚班</label>
-    <input name="time" type="checkbox" value="排班" class="tagsbutton" id="rand" />
-    <label for="rand">排班</label><br>
-    級別限制:
-    <input name="level" type="checkbox" value="大一" class="tagsbutton" id="first" />
-    <label for="first">大一</label>
-    <input name="level" type="checkbox" value="大二" class="tagsbutton" id="second" />
-    <label for="second">大二</label>
-    <input name="level" type="checkbox" value="大三" class="tagsbutton" id="third" />
-    <label for="third">大三</label>
-    <input name="level" type="checkbox" value="大四" class="tagsbutton" id="forth" />
-    <label for="forth">大四</label>
-    <input name="level" type="checkbox" value="碩班" class="tagsbutton" id="master" />
-    <label for="master">碩班</label>
-    <br>
-    工作薪資:
-    <input name="薪資" type="number" class="salary_range" />~<input name="薪資" type="number" class="salary_range">元/小時
-    <input type="submit" value="GO" class="GoButton">
-  </div> -->
-    <div id="lenarea">
-      <span>一次顯示</span>
-      <select id="len">
-        <option value="10">10</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-      </select>  
-      <span>項</span>
+  <div class="container">
+    <div class="tagsarea">
+      <div id="title">
+        <h1>您發布的工作</h1>
+      </div>
+      <div id="lenarea">
+        <span>一次顯示</span>
+        <select id="len">
+          <option value="10">10</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+        <span>項</span>
+      </div>
     </div>
     <div id="table">
-    <table id="job_info">
-      <thead>
-        <tr>
-          <th>標題</th>
-          <th>薪資</th>
-          <th>發布日期</th>
-          <th>最後編輯日期</th>
-          <th>瀏覽次數</th>
-        </tr>
-      </thead>
-      <tbody id="casearea">
-        
-      </tbody>
-    </table>
+      <table id="job_info">
+        <thead>
+          <tr>
+            <th>標題</th>
+            <th>薪資</th>
+            <th>發布日期</th>
+            <th>最後編輯日期</th>
+            <th>瀏覽次數</th>
+          </tr>
+        </thead>
+        <tbody id="casearea">
+
+        </tbody>
+      </table>
     </div>
     <div id="page">
       <ul class="pagination">
-        <li><a href="#">«</a></li>
-        <li><a class="active" href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">»</a></li>
+        <li>
+          <a href="#">«</a>
+        </li>
+        <li>
+          <a class="active" href="#">1</a>
+        </li>
+        <li>
+          <a href="#">2</a>
+        </li>
+        <li>
+          <a href="#">»</a>
+        </li>
       </ul>
     </div>
   </div>
 
 
-
-<script>
-function w3_open() {
-  document.getElementById("nav").style.marginLeft = "15%";
-  document.getElementById("mySidebar").style.width = "15%";
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
-}
-function w3_close() {
-  document.getElementById("nav").style.marginLeft = "0%";
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
-}
-</script>
-
 </body>
+
 </html>
