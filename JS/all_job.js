@@ -28,7 +28,9 @@ function like(t){
 		alert("請登入以使用收藏功能");
 	}else{
 		// var id=t.id.replace(/UNLIKE/,"LIKE");
-		// console.log(t);
+		console.log(t);
+		console.log($(t).children());
+		console.log($(t).parent().parent().children().eq(0).attr('id'));
 		var cid = $(t).parent().parent().children().eq(0).attr('id').substring(6);
 
 		console.log(cid);
@@ -54,6 +56,7 @@ function unlike(t){
 	// var cid = t.id.replace(/LIKE/,"");
 	// $(t).attr("src","../img/unlike.png");
 	// $(t).attr("id",id);
+	console.log(t);
 	var cid = $(t).parent().parent().children().eq(0).attr('id').substring(6);
 	$(t).attr("onclick","like(this)");
 	$(t).removeClass("fa-heart").addClass("fa-heart-o");
@@ -95,11 +98,11 @@ function getCase(start,len,tag){
 			for (var i = 0; i < data.length; i++) {
 				var updatetime = data[i].updatetime.substr(0,10);
 				if(data[i].like==-1)
-					$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td onclick='like(this)'><i class='fa fa-heart-o' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"'</i></td><td><i class='fa fa-envelope-open-o' aria-hidden='true' value='"+data[i].email+"' value='"+data[i].email+"'</i></td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
+					$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td><i class='fa fa-heart-o' onclick='like(this)' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"'</i></td><td><i class='fa fa-envelope-open-o' aria-hidden='true' value='"+data[i].email+"' value='"+data[i].email+"'</i></td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
 				else if(data[i].like==0)
-					$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td onclick='like(this)'><i id='UNLIKE"+data[i].id+"' value='"+data[i].like+"' class='fa fa-heart-o'></i></td><td><i class='fa fa-envelope-open-o aria-hidden='true' value='"+data[i].email+"'</td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
+					$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td><i onclick='like(this)' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"' class='fa fa-heart-o'></i></td><td><i class='fa fa-envelope-open-o aria-hidden='true' value='"+data[i].email+"'</td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
 				else
-					$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td onclick='unlike(this)'><i id='UNLIKE"+data[i].id+"' value='"+data[i].like+"' class='fa fa-heart'></i></td><td><i class='fa fa-envelope-open-o' aria-hidden='true' value='"+data[i].email+"'</i></td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
+					$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td><i onclick='unlike(this)' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"' class='fa fa-heart'></i></td><td><i class='fa fa-envelope-open-o' aria-hidden='true' value='"+data[i].email+"'</i></td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
 				$("#casearea").append("<tr><td colspan='6' id='caseContent"+data[i].id+"' class='content' style='display:none'><table class='job_detail'><tr><td>工作內容</td><td><pre>"+data[i].content+"</pre></td></tr><tr><td>分類</td><td>"+data[i].type+"</td></tr><tr><td>屬性</td><td>"+data[i].property+"</td></tr><tr><td>時段</td><td>"+data[i].time+"</td></tr><tr><td>條件</td><td>"+data[i].level+"</td></tr><tr><td>聯絡方式</td><td><p>電話："+data[i].phone+"</p><p>電子信箱："+data[i].email+"</p></td></tr><tr><td>工作地點</td><td>"+data[i].position+"</td></tr></table></tr>");
 			}
 			//工作詳細內容
