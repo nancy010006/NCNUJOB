@@ -90,7 +90,6 @@ function getCase(start,len,tag){
 		async:false,
 		success:function(r){
 			result=JSON.parse(r);
-			console.log('???');
 			console.log(result);
 			data=result.data;
 			$("#casearea").empty();
@@ -125,34 +124,40 @@ function makePage(totalPages,len){
 		$(".pagination").append('<li><a class="active" href="#" name="page" value="1">1</a></li>');
 	for (var i = 1; i < totalPages; i++) {
 		$(".pagination").append('<li><a href="#" name="page" value="'+(1+i)+'">'+(1+i)+'</a></li>');
+		if(i==3){
+		}
+	}
+	if (totalPages>=5) {
+		fixFivePage(3);
 	}
 	$(".pagination").append('<li><a href="#" id="next">»</a></li>');
 	$(".pagination a[name='page']").click(function(){
 		$(".pagination a").attr("class","");
 		$(this).toggleClass("active");
-		var nowpage = $(this).html();
-		// console.log(len);
-		// var len = $("#len").val();
-		// console.error((nowpage-1)*len);
+		var nowpage = parseInt($(this).html());
 		getCase((nowpage-1)*len,len,tag);
-		// console.error($(".pagination a[value='"+nowpage+"']").html());
 		$(".pagination a[value='"+nowpage+"']").attr("class","active");
+		fixFivePage(nowpage,totalPages);
 	})
 	$("#prev").click(function(){
-		var prev = $("a[class='active']").html()-1;
+		var prev = parseInt($("a[class='active']").html())-1;
+		var nowpage = prev+1;
 		if(prev!=0){
 			$(".pagination a").attr("class","");
 			getCase((prev-1)*len,len,tag);
 			$(".pagination a[value='"+prev+"']").attr("class","active");
 		}
+		fixFivePage(nowpage,totalPages);
 	})
 	$("#next").click(function(){
 		var next = parseInt($("a[class='active']").html())+1;
+		var nowpage = next-1;
 		if(next!=totalPages+1){
 			$(".pagination a").attr("class","");
 			getCase((next-1)*len,len,tag);
 			$(".pagination a[value='"+next+"']").attr("class","active");
 		}
+		fixFivePage(nowpage,totalPages);
 	})
 }
 function setTag(){
@@ -162,4 +167,23 @@ function setTag(){
 		var totalPages = getCase(0,len,tag);
 		makePage(totalPages,len);
 	})
+}
+function fixFivePage(nowpage,totalPages){
+	$(".pagination a[name='page']").css("display","none");
+	if(nowpage<=2){
+		for (var i = 1; i <= 5; i++) {
+			$(".pagination a[value='"+i+"']").css("display","block");
+		}
+	}
+	else if(nowpage>2){
+		if(nowpage+2>totalPages){
+			for (var i = totalPages-4; i <= totalPages; i++) {
+				$(".pagination a[value='"+i+"']").css("display","block");
+			}
+		}else{
+			for (var i = nowpage-2; i <= nowpage+2; i++) {
+				$(".pagination a[value='"+i+"']").css("display","block");
+			}
+		}
+	}
 }
