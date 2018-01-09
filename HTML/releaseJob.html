@@ -27,42 +27,42 @@
 <div class="Content">
     <div class="container px-5 my-5 resume_form">
     
-    <form class="mx-auto " style="max-width: 46rem">
+    <form id="releaseJob" class="mx-auto " style="max-width: 46rem">
             <legend class="mx-auto my-auto py-5">工作發佈</legend>
     <fieldset>
         
         <div class="row">
                 <div class="form-group col-md-12">
                     <label class="col-form-label">工作名稱</label>
-                    <input type="text" class="form-control" id="job_name" required/>
+                    <input name="title" type="text" class="form-control" id="job_name" required/>
                 </div>
         </div>
         <div class="row">
                 <div class="form-group col-md-12">
                     <label class="col-form-label">工作地點</label>
-                    <input type="text" class="form-control" id="" required/>
+                    <input name="position" type="text" class="form-control" id="" required/>
                 </div>
         </div>
         <div class="row">
                 <div class="form-group col-md-12">
                     <label class="col-form-label">工作內容</label>
-                        <textarea class="form-control" id="content"rows="5"></textarea>
+                        <textarea name="content" class="form-control" id="content"rows="5"></textarea>
                 </div>
         </div>
         <div class="row">
                 <div class="form-group col-md-6">
                     <label class="col-form-label">聯絡人</label>
-                    <input type="text" class="form-control" id="" required>
+                    <input name="author" type="text" class="form-control" id="" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label class="col-form-label">聯絡電話</label>
-                    <input type="text" class="form-control" id="" required>
+                    <input name="phone" type="text" class="form-control" id="" required>
                 </div>
         </div>
         <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-form-label">電子郵件</label>
-                        <input type="text" class="form-control" id="" required>
+                        <input name="email" type="text" class="form-control" id="" required>
                     </div>
                 </div>
         <div class="row">
@@ -70,22 +70,22 @@
                     <label class="col-form-label">工作性質</label>
                     <div class="form-check mx-1">
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="shop_time" value="短期">短期
+                            <input name="property" class="form-check-input" type="checkbox" id="shop_time" value="短期">短期
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="長期">長期
+                            <input name="property" class="form-check-input" type="checkbox" id="" value="長期">長期
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="暑假">暑假
+                            <input name="property" class="form-check-input" type="checkbox" id="" value="暑假">暑假
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="寒假">寒假
+                            <input name="property" class="form-check-input" type="checkbox" id="" value="寒假">寒假
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="實習">實習
+                            <input name="property" class="form-check-input" type="checkbox" id="" value="實習">實習
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input"type="checkbox" id="" value="臨時">臨時
+                            <input name="property" class="form-check-input"type="checkbox" id="" value="臨時">臨時
                         </label>
                     </div>
                 </div>
@@ -93,22 +93,22 @@
                     <label class="col-form-label">工作類型</label>
                     <div class="form-check row mx-1">
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="shop_time" value="餐飲">餐飲
+                            <input name="type" class="form-check-input" type="checkbox" id="shop_time" value="餐飲">餐飲
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="課輔">課輔
+                            <input name="type" class="form-check-input" type="checkbox" id="" value="課輔">課輔
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="房務">房務
+                            <input name="type" class="form-check-input" type="checkbox" id="" value="房務">房務
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="資訊">資訊
+                            <input name="type" class="form-check-input" type="checkbox" id="" value="資訊">資訊
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="助理">助理
+                            <input name="type" class="form-check-input" type="checkbox" id="" value="助理">助理
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="其他">其他
+                            <input name="type" class="form-check-input" type="checkbox" id="" value="其他">其他
                         </label>
                     </div>
                 </div>
@@ -118,36 +118,36 @@
                     <label class="col-form-label">工作時間</label>
                     <div class="form-check row mx-1">
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="平日">平日
+                            <input name="time" class="form-check-input" type="checkbox" id="" value="平日">平日
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="假日">假日
+                            <input name="time" class="form-check-input" type="checkbox" id="" value="假日">假日
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="早班">早班
+                            <input name="time" class="form-check-input" type="checkbox" id="" value="早班">早班
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="晚班">晚班
+                            <input name="time" class="form-check-input" type="checkbox" id="" value="晚班">晚班
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="排班">排班
+                            <input name="time" class="form-check-input" type="checkbox" id="" value="排班">排班
                         </label>
                         <label class="form-check-label col-md-3">
-                            <input class="form-check-input" type="checkbox" id="" value="大夜班">夜班
+                            <input name="time" class="form-check-input" type="checkbox" id="" value="大夜班">夜班
                         </label>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label class="col-form-label">薪資</label>
                     <div class="form-check mx-1">
-                        <label class="mx-2 row"><input type="radio" name="optradio" id="salary" value="day">時薪
-                        <input type="text" name="optradio"/></label>
-                        <label class="mx-2 row"><input type="radio" name="optradio" id="slarly" value="">其他(請詳述於工作內容中)</label>
+                        <label class="mx-2 row"><input name="check" type="radio" name="optradio" id="salary" value="day" required/>時薪
+                        <input name="salary" type="number"/></label>
+                        <label class="mx-2 row"><input name="check" type="radio" name="optradio" id="slarly" value="" required/>其他(請詳述於工作內容中)</label>
                     </div>
                 </div>
         </div>
         <div class="text-center mx-auto">
-            <button type="submit"class="btn btn-success">儲存</button>
+            <button type="submit"class="btn btn-success">發布</button>
             <span class="btn btn-danger">取消</span>
         </div>
     </fieldset>    

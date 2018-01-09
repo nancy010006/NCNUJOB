@@ -25,11 +25,15 @@ $(document).ready(function(){
 		event.preventDefault();
 		console.log(this);
 		console.log($(this).serializeArray());
-        console.log(objectifyForm($(this).serializeArray(),"addCase"));
         var data =  objectifyForm($(this).serializeArray(),"addCase");
+        delete data.check;
+        if(data.salary=="")
+            data.salary="其他"
         console.error(JSON.stringify(data));
+        console.error(data);
         data.releasetime = getNowTime();
         data.updatetime = getNowTime();
+
 		$.ajax({
             url:'../API/controller/ncnucase.php',
             data:JSON.stringify(data),

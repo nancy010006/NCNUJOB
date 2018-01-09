@@ -17,7 +17,12 @@ function addCase($data) {
         if($key!="act")
             $sql .= '"'.$value.'"' .",";
     }
-    $user = $_SESSION["user"];
+    if(!@$_SESSION["user"]){
+        $result["status"]=400;
+        return $result;
+    }
+    else
+        $user = $_SESSION["user"];
     $sql.= "'$user'";
     // $sql = substr($sql,0,-1);
     $sql .=")";
