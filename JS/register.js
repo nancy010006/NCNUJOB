@@ -13,6 +13,10 @@ function objectifyForm(formArray,actvalue) {//serialize data function
         return formObject;
 }
 $(document).ready(function(){
+    if(user){
+        alert("你已經是會員囉！")
+        history.go(-1);
+    }
 	$("#registerForm").submit(function(event){
 		event.preventDefault();
 		console.log(this);

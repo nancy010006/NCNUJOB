@@ -41,7 +41,7 @@ else{
 switch($act) {
         case 'getUser':
             if(@$_SESSION["user"])
-                echo @$_SESSION["user"];
+                echo getUser(@$_SESSION["user"]);
             else
                 echo "訪客";
             break;
@@ -71,6 +71,9 @@ switch($act) {
                     break;
                 case '400':
                     $result["msg"] = "履歷重複";
+                    break;
+                case '401':
+                    $result["msg"] = "請登入填履歷";
                     break;
                 case '501':
                     $result["msg"] = "發生未預期的錯誤 請聯絡管理員";

@@ -1,6 +1,12 @@
 <?php
 session_start();
 require("../../dbconnect.php");
+function getUser($account){
+    global $conn;
+    $sql = "select name from user where account = '$account'";
+    $result = mysqli_fetch_assoc(mysqli_query($conn,$sql));
+    return $result["name"];
+}
 function addUser($data) {
     global $conn;
     $sql = "insert into user (";
@@ -38,15 +44,17 @@ function addResume($data) {
         if($key!="act")
             $sql .= $key .",";
     }
-    $sql .="id";
+    $sql .="uid";
     $sql .=") values(";
     foreach ($data as $key => $value) {
         $data[$key] = mysqli_real_escape_string($conn,$value);
         if($key!="act")
             $sql .= '"'.$value.'"' .",";
     }
-    $id = $_SESSION["user"];
-    $sql .="'$id'";
+    if(!@$_SESSION["user"])
+        return 401;
+    $uid = $_SESSION["user"];
+    $sql .="'$uid'";
     // $sql = substr($sql,0,-1);
     $sql .=")";
     // print($sql);

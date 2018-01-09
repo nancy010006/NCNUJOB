@@ -25,6 +25,7 @@ $(document).ready(function(){
 		$("#exp").val(myResume[0].exp);
 		$("#department").val(myResume[0].department);
 		$("input[name='sex'][value='"+myResume[0].sex+"']").attr("checked",true);
+        $("#submit").remove();
 	}else{
 		console.log(2);
 	}

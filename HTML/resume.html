@@ -13,7 +13,7 @@
   <script src='../JS/jquery.min.js'></script>
   <script src="../JS/login.js" type="text/javascript"></script>
   <script type="text/javascript" src="../JS/includeBar.js"></script>
-  <script type="text/javascript" src="../JS/releaseJob.js"></script>
+  <script type="text/javascript" src="../JS/resume.js"></script>
 </head>
 
 <body>
@@ -23,13 +23,13 @@
 
 <div class="container">
     <div class="px-5 resume_form">
-        <form class="mx-auto" style="max-width: 46rem">
+        <form id="resume" class="mx-auto" style="max-width: 46rem">
             <legend class="mx-auto my-auto py-5">我的履歷</legend>
             <fieldset class="px-5 py-5">
                 <div class="row">
                         <div class="form-group col-md-12">
                             <label class="col-form-label">姓名</label>
-                            <input type="text" class="form-control" id="job_name" >
+                            <input name="name" type="text" class="form-control" id="name" >
                         </div>
                 </div>
                 <div class="row">
@@ -37,20 +37,20 @@
                             <label class="col-form-label">性別</label>
                             <label class="row">
                                 <label class="col-md-6">
-                                    <input type="radio" >男
+                                    <input name="sex" type="radio" value="男">男
                                 </label>
                                 <label class="col-md-6">
-                                    <input type="radio" >女
+                                    <input name="sex" type="radio" value="女">女
                                 </label>
                             </label>
                         </div>
                         <div class="form-group col-md-4　input-append date form_datetime">
                             <label class="col-form-label">生日</label>
-                            <input type="date" class="form-control" id="birthday"value="birthday">
+                            <input name="birthday" type="date" class="form-control" id="birthday"value="birthday">
                         </div>
                         <div class="form-group col-md-4">
                             <label class="col-form-label">科系</label>
-                            <select class="form-control">
+                            <select name="department" class="form-control">
                                 <option value="中文系">中文系</option>
                                 <option value="國比系">國比系</option>
                                 <option value="社工系">社工系</option>
@@ -68,40 +68,36 @@
                                 <option value="電機系">電機系</option>
                                 <option value="應化系">應化系</option>
                                 <option value="觀餐系">觀餐系</option>
+                                <option value="其他">其他</option>
                             </select>                          
                         </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
-                        <label class="col-form-label">聯絡人</label>
-                        <input type="text" class="form-control" id="" required>
-                    </div>
-                    <div class="form-group col-md-6">
                         <label class="col-form-label">聯絡電話</label>
-                        <input type="text" class="form-control" id="" required>
+                        <input name="phone" type="text" class="form-control" id="phone" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-form-label">電子郵件</label>
-                        <input type="text" class="form-control" id="" required>
+                        <input name="email" type="text" class="form-control" id="email" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-form-label">自傳</label>
-                        <textarea class="form-control" id="content"rows="5"　required></textarea>
+                        <textarea id="autobiography" name="autobiography" class="form-control" id="content" rows="5"　required></textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-form-label">工作經歷</label>
-                        <textarea class="form-control" id="content"rows="5" required></textarea>
+                        <textarea id="exp" name="exp" class="form-control" id="content"rows="5" required></textarea>
                     </div>
                 </div>
                 <div class="text-center mx-auto">
-                    <button type="submit"class="btn btn-success">儲存</button>
-                    <span class="btn btn-danger">取消</span>
+                    <button id="submit" type="submit" class="btn btn-success">送出</button>
                 </div>
             </fieldset>
         </form>
