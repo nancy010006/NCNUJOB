@@ -27,6 +27,7 @@ $(document).ready(function(){
 	})
 	//排序功能
 	$("th[class*='sort']").click(function(){
+		var tag = objectifyForm($("#tags").serializeArray());
 		order = this.attributes["name"].value;
 		var thisClass = $(this).attr("class");
 		//小到大
@@ -40,7 +41,7 @@ $(document).ready(function(){
 			$(this).toggleClass("desc");
 			direct = "desc";
 		}
-		getCase(start,len);
+		getCase(start,len,tag);
 	})
 })
 function like(t){
