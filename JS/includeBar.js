@@ -19,10 +19,6 @@ $(document).ready(function(){
 		else
 			$("#user").append("<a href='login.html'>登入</a>");
 	});
-	$.get("sidebar.html",function(data){
-		$("#sidebar").html(data);
-		// console.log(data);
-	});  
 })
 function logout(){
 	var check = confirm("確定要登出嗎?");
