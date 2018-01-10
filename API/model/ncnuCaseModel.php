@@ -61,6 +61,8 @@ function getSomeCase($data){
     }
     $start = $data["start"];
     $len = $data["len"];
+    @$order = $data["order"];
+    @$direct = $data["direct"];
     $sql = "select * from ncnucase where 1=0 ";
     @$property = explode("，", $data["property"]);
     foreach ($property as $key => $value) {
@@ -86,21 +88,13 @@ function getSomeCase($data){
             $check++;
         }
     }
-    @$level = explode("，", $data["level"]);
-    foreach ($level as $key => $value) {
-        if($value!=""){
-            $sql.="or level like '%$value%' ";
-        }else{
-            $check++;
-        }
-    }
-    if($check==4){
+    if($check==3){
         $numsql = "select * from ncnucase";
-        $sql = "select * from ncnucase order by updatetime desc limit $start,$len";
+        $sql = "select * from ncnucase order by ABS($order) $direct limit $start,$len";
     }
     else{
         $numsql = $sql;
-        $sql .="limit $start,$len";
+        $sql .="order by ABS($order) $direct limit $start,$len";
     }
     // print_r("\n".$sql."\n\n");
     $query = mysqli_query($conn,$sql);

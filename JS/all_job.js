@@ -1,3 +1,6 @@
+//排序用變數
+var order ="updatetime";
+var direct = "desc";
 function objectifyForm(formArray) {//serialize data function
         var returnArray=[];
         var formObject = {};
@@ -21,6 +24,23 @@ $(document).ready(function(){
 		var len = $("#len").val();
 		var totalPages = getCase(start,len,tag);
 		makePage(totalPages,len);
+	})
+	//排序功能
+	$("th[class*='sort']").click(function(){
+		order = this.attributes["name"].value;
+		var thisClass = $(this).attr("class");
+		//小到大
+		if(thisClass.indexOf("desc")!=-1){
+			$("th[class*='sort']").removeClass("desc asc");
+			$(this).toggleClass("asc");
+			direct = "asc";
+		//大到小
+		}else{
+			$("th[class*='sort']").removeClass("desc asc");
+			$(this).toggleClass("desc");
+			direct = "desc";
+		}
+		getCase(start,len);
 	})
 })
 function like(t){
@@ -72,7 +92,7 @@ function unlike(t){
 	})
 }
 function getCase(start,len,tag){
-	var act = {"act":"getSomeCase","start":start,"len":len};
+	var act = {"act":"getSomeCase","start":start,"len":len,"order":order,"direct":direct};
 	if(tag){
 		var keys = Object.keys(tag);
 		for (var i = 0; i < keys.length; i++) {
@@ -80,8 +100,8 @@ function getCase(start,len,tag){
 			// console.log(tag.keys[i]);
 			act[keys[i]]=tag[keys[i]];
 		}
-		console.log(act);
 	}
+	console.log(JSON.stringify(act));
 	var totalPages = 0 ;
 	$.ajax({
 		url:"../API/controller/ncnucase.php",

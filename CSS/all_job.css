@@ -57,3 +57,6 @@ pre{
 .caseTitle{
 	font-size: 20px;
 }
+.sort{
+	cursor: pointer;
+}
