@@ -1,0 +1,20 @@
+nav{
+	background-image: url(../img/Trees.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+nav a{
+	color: rgb(246, 246, 246);
+}
+nav a:hover{
+	color: #f1eded;
+}
+.title{
+    color: hsl(355, 100%, 49%);
+    margin-top: 2px;
+}
+.nav{
+    color:hsl(0, 0%, 96%);
+    font-size: 1.25rem;

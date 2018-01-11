@@ -25,7 +25,7 @@ function getCase(start,len){
 			data=result.data;
 			$("#casearea").empty();
 			for (var i = 0; i < data.length; i++) {
-				$("#casearea").append("<tr id='caseID"+data[i].id+"'><td>"+data[i].title+"</td><td>"+data[i].salary+"</td><td>"+data[i].releasetime+"</td><td>"+data[i].updatetime+"</td><td>"+data[i].views+"</td></tr>");
+				$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td onclick='unlike(this)'><i id='UNLIKE"+data[i].id+"' value='"+data[i].like+"' class='fa fa-heart'></i></td><td><i class='fa fa-envelope-open-o' aria-hidden='true' value='"+data[i].email+"'</i></td><td>"+updatetime+"</td><td>"+data[i].views+"</td></tr>");
 				$("#casearea").append("<tr id='caseContent"+data[i].id+"' class='content' style='display:none'><td colspan=5>"+data[i].content+"</td></tr>");
 			}
 			totalPages = parseInt(result.num/len);
