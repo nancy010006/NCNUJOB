@@ -33,12 +33,21 @@ $(document).ready(function(){
 		//小到大
 		if(thisClass.indexOf("desc")!=-1){
 			$("th[class*='sort']").removeClass("desc asc");
+			$("th[class*='sort']").children().removeClass("fa-sort-asc fa-sort-desc");
+			$("th[class*='sort']").children().addClass("fa-sort");
 			$(this).toggleClass("asc");
+			$(this).children().removeClass("fa-sort-desc");
+			$(this).children().addClass("fa-sort-asc");
 			direct = "asc";
 		//大到小
 		}else{
 			$("th[class*='sort']").removeClass("desc asc");
+			$("th[class*='sort']").children().removeClass("fa-sort-asc fa-sort-desc");
+			$("th[class*='sort']").children().addClass("fa-sort");
 			$(this).toggleClass("desc");
+			$(this).children().removeClass("fa-sort-asc");
+			$(this).children().addClass("fa-sort-desc");
+			// $(this).toggleClass("fa-sort-desc");
 			direct = "desc";
 		}
 		getCase(start,len,tag);
