@@ -90,6 +90,11 @@ switch($act) {
             echo (json_encode($result, JSON_UNESCAPED_UNICODE,JSON_FORCE_OBJECT));
             // echo (json_encode($result, JSON_UNESCAPED_UNICODE,JSON_FORCE_OBJECT));
             break;
+        case "getConnect":
+            $result= getConnect($data);
+            echo (json_encode($result, JSON_UNESCAPED_UNICODE,JSON_FORCE_OBJECT));
+            // echo (json_encode($result, JSON_UNESCAPED_UNICODE,JSON_FORCE_OBJECT));
+            break;
         case "caseConnect":
             $result = caseConnect($data);
             switch ($result["status"]) {
