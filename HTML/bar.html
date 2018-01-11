@@ -1,17 +1,25 @@
-<nav class="level navbar is-light">
+<link rel="stylesheet" type="text/css" href="../CSS/bar.css">
+<nav class="level navbar">
     <p class="level-item has-text-centered">
-      <a class="" href="all_job.html">所有職缺</a>
+      <div class="navbar-item is-hoverable has-dropdown">
+          <a  href="all_job.html" class="navbar-item nav">所有職缺</a>
+      </div>
     </p>
     <p class="level-item has-text-centered">
-      <a href="register.html">我要註冊</a>
+      <div class="navbar-item is-hoverable has-dropdown">
+          <a href="register.html" class="navbar-item nav">我要註冊</a>
+      </div>
+      
     </p>
     <p class="level-item has-text-centered">
-      <img src="../img/logo.png" alt="" style="height: 50px;">
+      <div >
+      <img src="../img/logo.png" alt="" style="height: 2.5rem;">
       <span class="title">血汗暨南</span>
+    </div>
     </p>
     <p class="level-item has-text-centered">
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="all_job.html">
+        <a class="navbar-link nav" href="all_job.html">
           會員專區
         </a>
         <div class="navbar-dropdown is-boxed">
@@ -33,7 +41,9 @@
         </div>
       </div>
     </p>
-    <p class="level-item">
-      <span id="user"></span>
+    <p class="level-item ">
+      <div class="navbar-item">
+      <span id="user" class="nav"></span>
+      </div>
     </p>
   </nav>
