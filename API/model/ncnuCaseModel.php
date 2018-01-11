@@ -388,6 +388,32 @@ function unLikeCase($data){
     }
     return $result;
 }
+function getConnect($data){
+    print_r($data);
+    global $conn;
+    $user = @$_SESSION["user"];
+    foreach ($data as $key => $value) {
+        $data[$key] = mysqli_real_escape_string($conn,$value);
+    }
+    // $start = $data["start"];
+    // $len = $data["len"];
+    // $user = $_SESSION["user"];
+    $sql = "select * from connected where cid = '$data[cid]'";
+    // $numsql = $sql; 
+    // $sql .=" limit $start,$len";
+    // $query = mysqli_query($conn,$numsql);
+    // $totalData = mysqli_num_rows($query);
+    // $query = mysqli_query($conn,$sql);
+    // $dbData = array();
+    // while($result = mysqli_fetch_assoc($query)){
+    //     array_push($dbData, $result);
+    // }
+    // $result=array();
+    // $result["data"]=$dbData;
+    // $result["num"]=$totalData;
+    // print_r($dbData);
+    return $result;
+}
 // function deleteUser($alldata){
 //     global $conn;
 //     $sql = "delete from user where 1=0 ";
