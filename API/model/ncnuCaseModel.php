@@ -389,16 +389,31 @@ function unLikeCase($data){
     return $result;
 }
 function getConnect($data){
-    print_r($data);
+    // print_r($data);
     global $conn;
     $user = @$_SESSION["user"];
     foreach ($data as $key => $value) {
         $data[$key] = mysqli_real_escape_string($conn,$value);
     }
-    // $start = $data["start"];
-    // $len = $data["len"];
+    $start = $data["start"];
+    $len = $data["len"];
     // $user = $_SESSION["user"];
     $sql = "select * from connected where cid = '$data[cid]'";
+    $query = mysqli_query($conn,$sql);
+    $memberlist = array();
+    while ($result = mysqli_fetch_assoc($query)) {
+        array_push($memberlist, $result["uid"]);
+    }
+    $sql ="select * from resume where 1=0 ";
+    foreach ($memberlist as $key => $value) {
+        $sql.="or uid = '$value' ";
+    }
+    $sql.="limit $start,$len";
+    $query = mysqli_query($conn,$sql);
+    $resumelist = array();
+    while ($result = mysqli_fetch_assoc($query)) {
+        array_push($resumelist, $result);
+    }
     // $numsql = $sql; 
     // $sql .=" limit $start,$len";
     // $query = mysqli_query($conn,$numsql);
@@ -412,7 +427,7 @@ function getConnect($data){
     // $result["data"]=$dbData;
     // $result["num"]=$totalData;
     // print_r($dbData);
-    return $result;
+    return $resumelist;
 }
 // function deleteUser($alldata){
 //     global $conn;
