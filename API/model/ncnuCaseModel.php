@@ -111,6 +111,12 @@ function getSomeCase($data){
     while($result = mysqli_fetch_assoc($query)){
         array_push($likelist, $result["cid"]);
     }
+    $sql = "select * from connected where uid='$user'";
+    $query = mysqli_query($conn,$sql);
+    $connectedlist=array();
+    while($result = mysqli_fetch_assoc($query)){
+        array_push($connectedlist, $result["cid"]);
+    }
     // $_SESSION["user"]="nancy";
     foreach ($dbData as $key => $value) {
         $dbData[$key]["like"]=0;
@@ -120,9 +126,18 @@ function getSomeCase($data){
             }
         }
     }
+    foreach ($dbData as $key => $value) {
+        $dbData[$key]["connected"]=0;
+        foreach ($connectedlist as $connectedkey => $connectedvalue) {
+            if($value["id"]==$connectedvalue){
+                $dbData[$key]["connected"]=1;
+            }
+        }
+    }
     if(!@$_SESSION["user"]){
         foreach ($dbData as $key => $value)
         $dbData[$key]["like"]=-1;
+        $dbData[$key]["connected"]=0;
     }    
     $result=array();
     $result["data"]=$dbData;
@@ -269,14 +284,21 @@ function caseConnect($data) {
         if($key!="act")
             $sql .= $key .",";
     }
-    $sql = substr($sql,0,-1);
+    if($uid = @$_SESSION["user"])
+        $sql .="uid";
+    else{
+        $result["status"]=400;
+        return $result;
+    }
+    // $sql = substr($sql,0,-1);
     $sql .=") values(";
     foreach ($data as $key => $value) {
         $data[$key] = mysqli_real_escape_string($conn,$value);
         if($key!="act")
             $sql .= '"'.$value.'"' .",";
     }
-    $sql = substr($sql,0,-1);
+    $sql.="'$uid'";
+    // $sql = substr($sql,0,-1);
     $sql .=")";
     // print($sql);
     mysqli_query($conn,$sql);
@@ -298,9 +320,9 @@ function caseUnConnect($data){
     foreach ($data as $key => $value) {
         $data[$key] = mysqli_real_escape_string($conn,$value);
     }
-    print_r($data);
+    // print_r($data);
     $cid = $data["cid"];
-    $uid = $data["uid"];
+    $uid = @$_SESSION["user"];
     $sql = "delete from connected where cid='$cid' and uid='$uid'";
     mysqli_query($conn,$sql);
     $result = mysqli_error($conn);

@@ -79,7 +79,6 @@ function like(t){
 			}
 		})
 	}
-	
 }
 function unlike(t){
 	// var id=t.id.replace(/LIKE/,"UNLIKE");
@@ -100,6 +99,60 @@ function unlike(t){
 		success:function(r){
 		}
 	})
+}
+function resumeDeliver(t){
+	if(user=="訪客"){
+		alert("請登入以使用功能");
+	}else{
+		var id=t.id.replace(/UNLIKE/,"LIKE");
+		console.log(t);
+		// console.log($(t).children());
+		// console.log($(t).parent().parent().children().eq(0).attr('id'));
+		var cid = $(t).parent().parent().children().eq(0).attr('id').substring(6);
+
+		console.log(cid);
+		// // $(t).attr("src","../img/like.png");
+		// // $(t).attr("id",id);
+		$(t).attr("onclick","resumeDeliverCancel(this)");
+		$(t).removeClass("fa-envelope-open-o").addClass("fa-check");
+		var act = {"act":"caseConnect","cid":cid};
+		console.log(act);
+		$.ajax({
+			url:"../API/controller/ncnucase.php",
+			data:JSON.stringify(act),
+			type:"POST",
+			async:false,
+			success:function(r){
+			}
+		})
+	}
+}
+function resumeDeliverCancel(t){
+	if(user=="訪客"){
+		alert("請登入以使用功能");
+	}else{
+		var id=t.id.replace(/UNLIKE/,"LIKE");
+		console.log(t);
+		// console.log($(t).children());
+		// console.log($(t).parent().parent().children().eq(0).attr('id'));
+		var cid = $(t).parent().parent().children().eq(0).attr('id').substring(6);
+
+		console.log(cid);
+		// // $(t).attr("src","../img/like.png");
+		// // $(t).attr("id",id);
+		$(t).attr("onclick","resumeDeliver(this)");
+		$(t).removeClass("fa-check").addClass("fa-envelope-open-o");
+		var act = {"act":"caseUnConnect","cid":cid};
+		console.log(act);
+		$.ajax({
+			url:"../API/controller/ncnucase.php",
+			data:JSON.stringify(act),
+			type:"POST",
+			async:false,
+			success:function(r){
+			}
+		})
+	}
 }
 function getCase(start,len,tag){
 	var act = {"act":"getSomeCase","start":start,"len":len,"order":order,"direct":direct};
@@ -127,11 +180,20 @@ function getCase(start,len,tag){
 			for (var i = 0; i < data.length; i++) {
 				var updatetime = data[i].updatetime.substr(0,10);
 				if(data[i].like==-1)
-					$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td><i class='fa fa-heart-o' onclick='like(this)' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"'</i></td><td><i class='fa fa-envelope-open-o' aria-hidden='true' value='"+data[i].email+"' value='"+data[i].email+"'</i></td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
-				else if(data[i].like==0)
-					$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td><i onclick='like(this)' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"' class='fa fa-heart-o'></i></td><td><i class='fa fa-envelope-open-o aria-hidden='true' value='"+data[i].email+"'</td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
-				else
-					$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td><i onclick='unlike(this)' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"' class='fa fa-heart'></i></td><td><i class='fa fa-envelope-open-o' aria-hidden='true' value='"+data[i].email+"'</i></td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
+					$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td><i class='fa fa-heart-o' onclick='like(this)' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"'</i></td><td><i onclick='resumeDeliver(this)' class='fa fa-envelope-open-o' aria-hidden='true' value='"+data[i].email+"' value='"+data[i].email+"'</i></td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
+				else if(data[i].like==0){
+					if(data[i].connected==0)
+						$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td><i onclick='like(this)' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"' class='fa fa-heart-o'></i></td><td><i onclick='resumeDeliver(this)' class='fa fa-envelope-open-o aria-hidden='true' value='"+data[i].email+"'</td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
+					else
+						$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td><i onclick='like(this)' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"' class='fa fa-heart-o'></i></td><td><i onclick='resumeDeliverCancel(this)' class='fa fa-check aria-hidden='true' value='"+data[i].email+"'</td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
+				}
+				else{
+					if(data[i].connected==0)
+						$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td><i onclick='unlike(this)' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"' class='fa fa-heart'></i></td><td><i onclick='resumeDeliver(this)' class='fa fa-envelope-open-o' aria-hidden='true' value='"+data[i].email+"'</i></td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
+					else
+						$("#casearea").append("<tr ><td class='caseTitle' id='caseID"+data[i].id+"'>"+data[i].title+"</td><td>"+data[i].salary+"</td><td><i onclick='unlike(this)' id='UNLIKE"+data[i].id+"' value='"+data[i].like+"' class='fa fa-heart'></i></td><td><i onclick='resumeDeliverCancel(this)' class='fa fa-check' aria-hidden='true' value='"+data[i].email+"'</i></td><td>"+updatetime+"</td><td>"+data[i].views+"</td>");
+
+				}
 				$("#casearea").append("<tr><td colspan='6' id='caseContent"+data[i].id+"' class='content' style='display:none'><table class='job_detail'><tr><td>工作內容</td><td><pre>"+data[i].content+"</pre></td></tr><tr><td>分類</td><td>"+data[i].type+"</td></tr><tr><td>屬性</td><td>"+data[i].property+"</td></tr><tr><td>時段</td><td>"+data[i].time+"</td></tr><tr><td>條件</td><td>"+data[i].level+"</td></tr><tr><td>聯絡方式</td><td><p>電話："+data[i].phone+"</p><p>電子信箱："+data[i].email+"</p></td></tr><tr><td>工作地點</td><td>"+data[i].position+"</td></tr></table></tr>");
 			}
 			//工作詳細內容

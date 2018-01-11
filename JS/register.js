@@ -13,7 +13,7 @@ function objectifyForm(formArray,actvalue) {//serialize data function
         return formObject;
 }
 $(document).ready(function(){
-    if(user){
+    if(user&&user!="訪客"){
         alert("你已經是會員囉！")
         history.go(-1);
     }

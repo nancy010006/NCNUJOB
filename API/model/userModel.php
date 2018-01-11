@@ -199,7 +199,7 @@ function fbOlduser($data) {
 function getOneResume($data){
     global $conn;
     $user = $_SESSION["user"];
-    $sql = "select * from resume where id ='$user'";
+    $sql = "select * from resume where uid ='$user'";
     // print_r($sql);
     $result = mysqli_query($conn,$sql);
     $dbData = array();

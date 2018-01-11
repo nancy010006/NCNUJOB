@@ -59,7 +59,7 @@ function getResume(){
         success:function(r){
                 result=JSON.parse(r);
                 returnValue = result;
-                // alert(result.msg);
+                // console.log(result);
                 // alert(result[0].messege);
         },
         error:function(err){
