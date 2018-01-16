@@ -1,0 +1,63 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>工作詳情</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../JS/includeBar.js"></script>
+    <script type="text/javascript" src="../JS/jobdetail.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  </head>
+
+  <body>
+  	<div id="nav"></div>
+    <div class="container">
+      <main role="main">
+
+        <div class="jumbotron">
+          <h1 id="title" class="display-3"></h1>
+          <pre id="content"></pre>
+          <div class="row marketing">
+          <div class="col-lg-12">
+            <h3>時薪</h3><p id="salary"></p>
+
+          </div>
+          <p><button id="apply" class="btn btn-lg btn-success" onclick="resumeDeliver()" role="button">我想應徵</button></p>
+        </div>
+        </div>
+        <div class="row marketing">
+          <div class="col-lg-4">
+            <h3>聯絡人</h3><p id="author"></p>
+            <h3>地點</h3><p id="position"></p>
+            <h3>工作性質</h3><p id="property"></p>
+          </div>
+
+          <div class="col-lg-4">
+            <h3>連絡電話</h3><p id="phone"></p>
+            <h3>瀏覽次數</h3><p id="views"></p>
+            <h3>工作類型</h3><p id="type"></p>
+
+          </div>
+          <div class="col-lg-4">
+            <h3>電子信箱</h3><p id="email"></p>
+            <h3>發布時間</h3><p id="releasetime"></p>
+          	<h3>工作時間</h3><p id="time"></p>
+
+          </div>
+        </div>
+
+      </main>
+
+    </div> <!-- /container -->
+  
+
+</body>
+</html>

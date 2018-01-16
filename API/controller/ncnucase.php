@@ -54,22 +54,6 @@ switch($act) {
             }
             echo (json_encode($result, JSON_UNESCAPED_UNICODE,JSON_FORCE_OBJECT));
             break;
-        // case "deleteUser":
-        //         $table=array();
-        //         $alldata = @$data[1];
-        //         $result = array();
-        //         $status["status"]= deleteUser($alldata);
-        //         switch ($status["status"]) {
-        //             case '200':
-        //                 $status["messege"] = "刪除成功";
-        //                 break;
-        //             case '501':
-        //                 $status["messege"] = "發生未預期的錯誤 請聯絡管理員";
-        //                 break;
-        //         }
-        //         array_push($result, $status);
-        //         echo (json_encode($result, JSON_UNESCAPED_UNICODE,JSON_FORCE_OBJECT));
-        //         break;
         case "getAllCase":
             $result= getAllCase();
             echo (json_encode($result, JSON_UNESCAPED_UNICODE,JSON_FORCE_OBJECT));
@@ -92,6 +76,11 @@ switch($act) {
             break;
         case "getConnect":
             $result= getConnect($data);
+            echo (json_encode($result, JSON_UNESCAPED_UNICODE,JSON_FORCE_OBJECT));
+            // echo (json_encode($result, JSON_UNESCAPED_UNICODE,JSON_FORCE_OBJECT));
+            break;
+        case "getCaseDetail":
+            $result= getCaseDetail($data);
             echo (json_encode($result, JSON_UNESCAPED_UNICODE,JSON_FORCE_OBJECT));
             // echo (json_encode($result, JSON_UNESCAPED_UNICODE,JSON_FORCE_OBJECT));
             break;

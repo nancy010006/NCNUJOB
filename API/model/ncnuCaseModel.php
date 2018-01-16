@@ -429,6 +429,19 @@ function getConnect($data){
     // print_r($dbData);
     return $resumelist;
 }
+function getCaseDetail($data){
+    global $conn;
+    $caseID = mysqli_real_escape_string($conn,$_GET["id"]);
+    $refresh = mysqli_real_escape_string($conn,$_GET["refresh"]);
+    $sql = "select ncnucase.*,connected.uid from ncnucase left join connected on ncnucase.id = connected.cid where ncnucase.id = '$caseID'";
+    // print($sql);
+    $result = mysqli_fetch_assoc(mysqli_query($conn,$sql));
+    if($refresh){
+        $sql = "UPDATE `ncnucase` SET `views` = views+1 WHERE `ncnucase`.`id` = '$caseID';";
+        mysqli_query($conn,$sql);
+    }
+    return $result;
+}
 // function deleteUser($alldata){
 //     global $conn;
 //     $sql = "delete from user where 1=0 ";
