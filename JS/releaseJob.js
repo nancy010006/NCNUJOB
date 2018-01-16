@@ -29,6 +29,8 @@ $(document).ready(function(){
         delete data.check;
         if(data.salary=="")
             data.salary="其他"
+        else
+            data.salary=data.salary+"元/hr";
         console.error(JSON.stringify(data));
         console.error(data);
         data.releasetime = getNowTime();

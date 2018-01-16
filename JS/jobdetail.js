@@ -1,18 +1,15 @@
 $(document).ready(function(){
-	var refresh = preventRefesh();
 	var id = getParameterName("id");
-	console.log("../API/controller/ncnucase.php?act=getCaseDetail&id="+id+"&refresh="+refresh);
+	var refresh = preventRefesh(id);
 	$.ajax({
 		url:"../API/controller/ncnucase.php?act=getCaseDetail&id="+id+"&refresh="+refresh,
 		type:"GET",
 		async:false,
 		success:function(r){
 			var result = JSON.parse(r);
-			console.log(result);
 			$.each(result, function(i, item) {
 				$("#"+i).html(item);
 			});
-			console.log(result.uid);
 			if(result.uid){
 				$("#apply").html("撤除履歷");
 				$("#apply").removeClass("btn-success");
@@ -101,16 +98,20 @@ function getCookie(cookieName) {
   }
   return "";
 }
-function preventRefesh(){
-	if(!getCookie("time"))
-		setCookie("time",new Date(),"1");
+function preventRefesh(id){
+	// console.log(document.cookie);
+	if(!getCookie(id)){
+		setCookie(id,new Date(),"1");
+		return 1;
+	}
 	var nowTime = new Date();
 	// document.cookie = ;
-	var cookieTime = new Date(getCookie("time"));
+	var cookieTime = new Date(getCookie(id));
 	delta = (nowTime-cookieTime)/1000/60;
+	console.log(delta);
 	//大於幾分鐘可再刷新
 	if(delta>60){
-		setCookie("time",new Date(),"1");
+		setCookie(id,new Date(),"1");
 		return 1;
 	}
 	else

@@ -50,7 +50,10 @@ $(document).ready(function(){
 			// $(this).toggleClass("fa-sort-desc");
 			direct = "desc";
 		}
-		getCase(start,len,tag);
+		var nowpage = parseInt($("a[class='active']").html());
+		// console.log(nowpage);
+		getCase((nowpage-1)*len,len,tag);
+		// getCase(start,len,tag);
 	})
 })
 function like(t){
