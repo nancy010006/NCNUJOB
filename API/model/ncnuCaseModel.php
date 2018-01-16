@@ -155,6 +155,8 @@ function getLikeList($data){
     //去喜好清單撈目前使用者喜好的清單
     // print_r($_SESSION["user"]);
     $user = $_SESSION["user"];
+    @$order = $data["order"];
+    @$direct = $data["direct"];
     $sql = "select * from likelist where uid = '$user'";
     $query = mysqli_query($conn,$sql);
     $likelist = array();
@@ -164,7 +166,7 @@ function getLikeList($data){
     //依據喜好清單id撈工作詳細內容
     $start = $data["start"];
     $len = $data["len"];
-    $sql = "select * from ncnucase where 1=0 ";
+    $sql = "select * from likelist left join ncnucase on likelist.cid = ncnucase.id where likelist.uid='$user' and (1=0 ";
     @$property = explode("，", $data["property"]);
     foreach ($property as $key => $value) {
         if($value!=""){
@@ -197,15 +199,6 @@ function getLikeList($data){
             $check++;
         }
     }
-    $sql.="and( 1=0 ";
-    foreach ($likelist as $key => $value) {
-        if($value!=""){
-            $sql.="or id = '$value' ";
-        }else{
-            $check++;
-        }
-    }
-    $sql .= ")";
     if($check==4){
         $sql = "select * from ncnucase where 1=0 ";
         foreach ($likelist as $key => $value) {
@@ -215,13 +208,13 @@ function getLikeList($data){
                 $check++;
             }
         }
-        $numsql = $sql; 
-        $sql .=" limit $start,$len";
-        $query = mysqli_query($conn,$numsql);
-        $totalData = mysqli_num_rows($query);
+    }else{
+        $sql .=")";
     }
-    else
-        $sql .="limit $start,$len";
+    $sql .=" order by ABS($order) $direct limit $start,$len";
+    $numsql = $sql; 
+    $query = mysqli_query($conn,$numsql);
+    $totalData = mysqli_num_rows($query);
     // print_r("\n".$sql."\n\n");
     $query = mysqli_query($conn,$sql);
     $dbData = array();
@@ -260,9 +253,12 @@ function getPublish($data){
     $start = $data["start"];
     $len = $data["len"];
     $user = $_SESSION["user"];
-    $sql = "select * from ncnucase where uid = '$user'";
-    $numsql = $sql; 
-    $sql .=" limit $start,$len";
+    @$order = $data["order"];
+    @$direct = $data["direct"];
+    $numsql = "select * from ncnucase where uid = '$user'";
+    $sql  ="select ncnucase.*,count(a.who) as num from ncnucase left join (select connected.uid as who,ncnucase.uid,connected.cid from ncnucase,connected where ncnucase.id=connected.cid) as a on ncnucase.uid = a.uid and ncnucase.id=a.cid where ncnucase.uid='$user' GROUP by ncnucase.id ";
+    $sql .="order by ABS($order) $direct limit $start,$len";
+    // print_r($sql);
     $query = mysqli_query($conn,$numsql);
     $totalData = mysqli_num_rows($query);
     $query = mysqli_query($conn,$sql);
@@ -391,43 +387,100 @@ function unLikeCase($data){
 function getConnect($data){
     // print_r($data);
     global $conn;
-    $user = @$_SESSION["user"];
+    $check=0;
     foreach ($data as $key => $value) {
         $data[$key] = mysqli_real_escape_string($conn,$value);
     }
+    //去喜好清單撈目前使用者喜好的清單
+    // print_r($_SESSION["user"]);
+    $user = $_SESSION["user"];
+    @$order = $data["order"];
+    @$direct = $data["direct"];
+    $sql = "select * from connected where uid = '$user'";
+    $query = mysqli_query($conn,$sql);
+    $connected = array();
+    while ($row = mysqli_fetch_assoc($query)) {
+        array_push($connected,$row["cid"]);
+    }
+    //依據喜好清單id撈工作詳細內容
     $start = $data["start"];
     $len = $data["len"];
-    // $user = $_SESSION["user"];
-    $sql = "select * from connected where cid = '$data[cid]'";
+    $sql = "select * from connected left join ncnucase on connected.cid = ncnucase.id where connected.uid='$user' and(1=0 ";
+    @$property = explode("，", $data["property"]);
+    foreach ($property as $key => $value) {
+        if($value!=""){
+            $sql.="or property like '%$value%' ";
+        }else{
+            $check++;
+        }
+    }
+    @$type = explode("，", $data["type"]);
+    foreach ($type as $key => $value) {
+        if($value!=""){
+            $sql.="or type like '%$value%' ";
+        }else{
+            $check++;
+        }
+    }
+    @$time = explode("，", $data["time"]);
+    foreach ($time as $key => $value) {
+        if($value!=""){
+            $sql.="or time like '%$value%' ";
+        }else{
+            $check++;
+        }
+    }
+    @$level = explode("，", $data["level"]);
+    foreach ($level as $key => $value) {
+        if($value!=""){
+            $sql.="or level like '%$value%' ";
+        }else{
+            $check++;
+        }
+    }
+    if($check==4){
+        $sql = "select * from ncnucase where 1=0 ";
+        foreach ($connected as $key => $value) {
+            if($value!=""){
+                $sql.="or id = '$value' ";
+            }else{
+                $check++;
+            }
+        }
+    }else{
+        $sql .=")";
+    }
+    $numsql = $sql; 
+    $sql .="order by ABS($order) $direct limit $start,$len";
+    $query = mysqli_query($conn,$numsql);
+    $totalData = mysqli_num_rows($query);
+    // print_r("\n".$sql."\n\n");
     $query = mysqli_query($conn,$sql);
-    $memberlist = array();
-    while ($result = mysqli_fetch_assoc($query)) {
-        array_push($memberlist, $result["uid"]);
+    $dbData = array();
+    while($result = mysqli_fetch_assoc($query)){
+        array_push($dbData, $result);
     }
-    $sql ="select * from resume where 1=0 ";
-    foreach ($memberlist as $key => $value) {
-        $sql.="or uid = '$value' ";
-    }
-    $sql.="limit $start,$len";
+    @$user = $_SESSION["user"];
+    $sql = "select * from likelist where uid='$user'";
     $query = mysqli_query($conn,$sql);
-    $resumelist = array();
-    while ($result = mysqli_fetch_assoc($query)) {
-        array_push($resumelist, $result);
+    $likelist=array();
+    while($result = mysqli_fetch_assoc($query)){
+        array_push($likelist, $result["cid"]);
     }
-    // $numsql = $sql; 
-    // $sql .=" limit $start,$len";
-    // $query = mysqli_query($conn,$numsql);
-    // $totalData = mysqli_num_rows($query);
-    // $query = mysqli_query($conn,$sql);
-    // $dbData = array();
-    // while($result = mysqli_fetch_assoc($query)){
-    //     array_push($dbData, $result);
-    // }
-    // $result=array();
-    // $result["data"]=$dbData;
-    // $result["num"]=$totalData;
+    // $_SESSION["user"]="nancy";
+    foreach ($dbData as $key => $value) {
+        $dbData[$key]["like"]=0;
+        foreach ($likelist as $likekey => $likevalue) {
+            if($value["id"]==$likevalue){
+                $dbData[$key]["like"]=1;
+            }
+        }
+    }
+    $result=array();
+    $result["data"]=$dbData;
+    $result["num"]=$totalData;
     // print_r($dbData);
-    return $resumelist;
+    return $result;
 }
 function getCaseDetail($data){
     global $conn;
@@ -440,6 +493,17 @@ function getCaseDetail($data){
     $sql = "select ncnucase.*,connected.uid from ncnucase left join connected on ncnucase.id = connected.cid where ncnucase.id = '$caseID'";
     // print($sql);
     $result = mysqli_fetch_assoc(mysqli_query($conn,$sql));
+    return $result;
+}
+function getResumeList($data){
+    global $conn;
+    $result = array();
+    $caseID = mysqli_real_escape_string($conn,$_GET["id"]);
+    $sql = "select * from connected left join resume on resume.uid = connected.uid where connected.cid = $caseID";
+    $query = mysqli_query($conn,$sql);
+    while($row = mysqli_fetch_assoc($query)){
+        array_push($result, $row);
+    }
     return $result;
 }
 // function deleteUser($alldata){

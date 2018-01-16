@@ -97,7 +97,7 @@ function unlike(t){
 	})
 }
 function getCase(start,len,tag){
-	var act = {"act":"getLikeList","start":start,"len":len,"order":order,"direct":direct};
+	var act = {"act":"getConnect","start":start,"len":len,"order":order,"direct":direct};
 	if(tag){
 		var keys = Object.keys(tag);
 		for (var i = 0; i < keys.length; i++) {

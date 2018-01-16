@@ -9,71 +9,74 @@
   <script type="text/javascript" src="../JS/getUser.js"></script>
   <script type="text/javascript" src="../JS/includeBar.js"></script>
   <script type="text/javascript" src="../JS/publish.js"></script>
-  
-  <link rel="stylesheet" type="text/css" href="../CSS/publish.css">
+  <script type="text/javascript" src="../JS/checkLogin.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+    
+  <link rel="stylesheet" type="text/css" href="../CSS/all_job.css">
   <link rel="stylesheet" type="text/css" href="../CSS/page.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+  
 </head>
 
 <body>
-  <div id="nav">
-  </div>
-  <!-- <button id="coverl">找工作</button>
-<button id="coverr">找員工</button> -->
-
+  <div id="nav"></div>
   <div class="container">
-    <div class="tagsarea">
-      <div id="title">
-        <h1>您發布的工作</h1>
-      </div>
-      <div id="lenarea">
-        <span>一次顯示</span>
-        <select id="len">
-          <option value="10">10</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
-        <span>項</span>
-      </div>
+  <h1>已發佈的文章</h1>
+        <div id="lenarea" class="text-right">
+          <span>一次顯示</span>
+          <select id="len">
+            <option value="10">10</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          <span>項</span>
+        </div>
+      </form>
+
     </div>
-    <div id="table">
-      <table id="job_info">
-        <thead>
-          <tr>
-          <th>標題</th>
-          <th>薪資</th>
-          <th>收藏</th>
-          <th>投送履歷</th>
-          <th>最後編輯日期</th>
-          <th>瀏覽次數</th>
-          </tr>
-        </thead>
+
+
+    <dv id="table">
+      <table id="job_info" class="job_info">
+        <div>
+          <thead>
+            <tr>
+              <th class="sort" name="title"><i class="fa fa-sort" aria-hidden="true"></i>標題</th>
+              <th class="sort" name="salary"><i class="fa fa-sort" aria-hidden="true"></i>薪資</th>
+              <th class="sort" name="updatetime"><i class="fa fa-sort-desc" aria-hidden="true"></i>最後編輯日期</th>
+              <th class="sort" name="who"><i class="fa fa-sort" aria-hidden="true"></i>應徵人數</th>
+              <th class="sort" name="views"><i class="fa fa-sort" aria-hidden="true"></i>瀏覽次數</th>
+            </tr>
+          </thead>
+
+        </div>
         <tbody id="casearea">
 
         </tbody>
       </table>
-    </div>
-    <div id="page">
-      <ul class="pagination">
-        <li>
-          <a href="#">«</a>
-        </li>
-        <li>
-          <a class="active" href="#">1</a>
-        </li>
-        <li>
-          <a href="#">2</a>
-        </li>
-        <li>
-          <a href="#">»</a>
-        </li>
-      </ul>
-    </div>
   </div>
-
-
+  </div>
+  <div id="page">
+    <ul class="pagination">
+      <li>
+        <a href="#">«</a>
+      </li>
+      <li>
+        <a class="active" href="#">1</a>
+      </li>
+      <li>
+        <a href="#">2</a>
+      </li>
+      <li>
+        <a href="#">»</a>
+      </li>
+    </ul>
+  </div>
 </body>
 
 </html>

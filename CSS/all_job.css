@@ -52,9 +52,12 @@ pre{
 .caseTitle{
 	font-size: 20px;
 }
-.sort{
+.sort,.fa{
 	cursor: pointer;
 }
 body{
 	background-image: url("../img/back.jpg");
+}
+.fa:hover{
+	transform: scale(1.3);
 }

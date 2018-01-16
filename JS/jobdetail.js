@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	var id = getParameterName("id");
 	var refresh = preventRefesh(id);
+	if(user=="訪客")
+		$("#apply").attr("disabled",true);
 	$.ajax({
 		url:"../API/controller/ncnucase.php?act=getCaseDetail&id="+id+"&refresh="+refresh,
 		type:"GET",
