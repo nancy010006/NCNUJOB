@@ -61,10 +61,8 @@ function like(t){
 		alert("請登入以使用收藏功能");
 	}else{
 		// var id=t.id.replace(/UNLIKE/,"LIKE");
-		console.log(t);
-		console.log($(t).children());
-		console.log($(t).parent().parent().children().eq(0).attr('id'));
-		var cid = $(t).parent().parent().children().eq(0).attr('id').substring(6);
+		console.log(t.id);
+		var cid = t.id.substring(6);
 
 		console.log(cid);
 		// $(t).attr("src","../img/like.png");
@@ -84,12 +82,7 @@ function like(t){
 	}
 }
 function unlike(t){
-	// var id=t.id.replace(/LIKE/,"UNLIKE");
-	// var cid = t.id.replace(/LIKE/,"");
-	// $(t).attr("src","../img/unlike.png");
-	// $(t).attr("id",id);
-	console.log(t);
-	var cid = $(t).parent().parent().children().eq(0).attr('id').substring(6);
+	var cid = t.id.substring(6);
 	$(t).attr("onclick","like(this)");
 	$(t).removeClass("fa-heart").addClass("fa-heart-o");
 	var act = {"act":"unLikeCase","cid":cid};
