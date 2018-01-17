@@ -293,14 +293,22 @@ function caseConnect($data) {
         if($key!="act")
             $sql .= '"'.$value.'"' .",";
     }
+    $cid = $data["cid"];
     $sql.="'$uid'";
     // $sql = substr($sql,0,-1);
     $sql .=")";
-    // print($sql);
     mysqli_query($conn,$sql);
     $result = mysqli_error($conn);
-    if(!$result)
+    if(!$result){
         $result["status"]=200;
+        $sql = "select * from ncnucase where id = '$cid'";
+        $case = mysqli_fetch_assoc(mysqli_query($conn,$sql));
+        $to =$case["email"]; //收件者
+        $subject = "您在血汗暨南發的工作'".$case["title"]."'有一則新的履歷"; //信件標題
+        $msg = "請至163.22.17.225使用帳號 ".$case["uid"]." 查看履歷";//信件內容
+        $headers = "From: ncnujob@ncnu.edu.tw"; //寄件者
+        mail("$to", "$subject", "$msg", "$headers");
+    }
     else if($result =="Duplicate entry '$account' for key 'PRIMARY'"){
         $result=array();
         $result["status"]=400;
@@ -486,13 +494,21 @@ function getCaseDetail($data){
     global $conn;
     $caseID = mysqli_real_escape_string($conn,$_GET["id"]);
     $refresh = mysqli_real_escape_string($conn,$_GET["refresh"]);
+    $user = @$_SESSION["user"];
     if($refresh){
         $sql = "UPDATE `ncnucase` SET `views` = views+1 WHERE `ncnucase`.`id` = '$caseID';";
         mysqli_query($conn,$sql);
     }
-    $sql = "select ncnucase.*,connected.uid from ncnucase left join connected on ncnucase.id = connected.cid where ncnucase.id = '$caseID'";
-    // print($sql);
-    $result = mysqli_fetch_assoc(mysqli_query($conn,$sql));
+    $sql = "select ncnucase.*,connected.uid as employees from ncnucase left join connected on ncnucase.id = connected.cid where ncnucase.id = '$caseID'";
+    $query = mysqli_query($conn,$sql);
+    $result = "";
+    while ($row = mysqli_fetch_assoc($query)) {
+        // if($row["uid"])
+        $result = $row;
+        if($row["employees"]==$user)
+            return $row;
+    }
+    $result["employees"]="";
     return $result;
 }
 function getResumeList($data){

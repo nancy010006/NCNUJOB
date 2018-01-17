@@ -9,10 +9,11 @@ $(document).ready(function(){
 		async:false,
 		success:function(r){
 			var result = JSON.parse(r);
+			console.log(result);
 			$.each(result, function(i, item) {
 				$("#"+i).html(item);
 			});
-			if(result.uid){
+			if(result.employees){
 				$("#apply").html("撤除履歷");
 				$("#apply").removeClass("btn-success");
 				$("#apply").addClass("btn-danger");
